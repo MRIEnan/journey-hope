@@ -5,7 +5,9 @@ import HexGridDemo from '../components/Grid';
 const play = () => {
     return (
         <div className="App">
-          <HexGridDemo />
+            <div className="hexagone-container">
+                <HexGridDemo/>
+            </div>
         </div>
       );
 };
