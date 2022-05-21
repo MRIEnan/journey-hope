@@ -15,6 +15,8 @@ a {
   box-sizing: border-box;
 }
 
+/* hexagone main container */
+
 .hexagone-container{
   height: 660px;
   width: 660px;
@@ -24,6 +26,56 @@ a {
   /* background-color: red; */
   border-radius: 50%;
   overflow: hidden;
+  position: relative;
+  border: 3px solid red;
+}
+
+
+/* hexagone container circle section  */
+.circle-section{
+  position: absolute;
+  border: 3px solid red;
+  background-color: transparent;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.first-section{
+  width: 80%;
+  height: 80%;
+  background-color: transparent;
+}
+.second-section{
+  width: 60%;
+  height: 60%;
+  background-color: transparent;
+}
+.third-section{
+  width: 40%;
+  height: 40%;
+  background-color: transparent;
+}
+.fourth-section{
+  width: 20%;
+  height: 20%;
+  background-color: transparent;
+}
+
+/* hexagone container vertical section  */
+.vertical-section{
+  position: absolute;
+  border: 2px solid red ;
+  height: 100%;
+  background-color: transparent;
+}
+.two-section{
+  transform: rotateZ(45deg);
+}
+.three-section{
+  transform: rotateZ(90deg);
+}
+.four-section{
+  transform: rotateZ(135deg);
 }
 
 .hexagone-single{
@@ -33,3 +85,21 @@ a {
   z-index: 5;
   /* background-color: rgba(0, 0, 0, .44); */
 }
+
+.spaceship-container{
+  background-color: transparent;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  z-index: -1;
+  /* bottom: -15px; */
+  /* left: calc( 50% - 20px); */
+}
+
+/* .spaceship-icon{
+  background-color: red;
+  position: relative;
+  bottom: 0;
+  left: 500px;
+} */

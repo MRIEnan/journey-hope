@@ -95,7 +95,7 @@ const HexGridDemo = () => {
   let hexagons = times(729, (id) => id);
 
   return (
-    <HexagonGrid classname="hexagone-container"
+    <HexagonGrid
       gridWidth={800}
       gridHeight={800}
       hexagons={hexagons}
