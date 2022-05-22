@@ -95,7 +95,7 @@ a {
 
 .spaceship-container{
   position: absolute;
-  background-color: blue;
+  /* background-color: blue; */
   z-index: 11;
   left: 0px;
   top: 0px;
@@ -105,8 +105,9 @@ a {
 .starship{
   /* background-color: aquamarine; */
   position: relative;
-  left: 10px;
-  bottom: -14px;
+  left: -10px;
+  top: -20px;
+  /* bottom: -14px; */
 }
 /* .spaceship-icon{
   background-color: red;

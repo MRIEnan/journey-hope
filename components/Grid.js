@@ -1,5 +1,5 @@
 import times from "lodash/times";
-import React, { useState } from "react";
+import React from "react";
 import HexagonGrid from "./hexagongrid.js";
 
 const HexGridDemo = ({ setPositionX, setPositionY , finalPosition, setFinalPosition, initialPosition, setInitialPosition}) => {
@@ -8,8 +8,8 @@ const HexGridDemo = ({ setPositionX, setPositionY , finalPosition, setFinalPosit
     if (hexagon == finalPosition) {
       return {
         style: {
-          // fill: "rgb(0, 255, 21)",
-          fill: "rgba(255,255,255,0.2)",
+          fill: "rgb(0, 255, 21)",
+          // fill: "rgba(255,255,255,0.2)",
           stroke: "rgba(255,255,255,0.35)",
           zIndex: "6",
         },
@@ -19,6 +19,7 @@ const HexGridDemo = ({ setPositionX, setPositionY , finalPosition, setFinalPosit
         }, */
         onClick: (e) => {
           const hexId = window.document.getElementById(`${hexagon}text`);
+          console.log(`hello ${hexId.target}`);
           if (hexagon != finalPosition) {
             setInitialPosition(finalPosition);
             setFinalPosition(hexagon);
@@ -37,8 +38,8 @@ const HexGridDemo = ({ setPositionX, setPositionY , finalPosition, setFinalPosit
       return {
         style: {
           // fill: hexagon==finalPosition?"rgb(0, 255, 21)":"transparent",
-          // fill: "rgb(250, 125, 101)",
-          fill: "rgba(255,255,255,0.2)",
+          fill: "rgb(250, 125, 101)",
+          // fill: "rgba(255,255,255,0.2)",
           stroke: "rgba(255,255,255,0.35)",
           zIndex: "6",
         },
