@@ -7,13 +7,14 @@ const GameWheel = () => {
   const [positionX, setPositionX] = useState(335);
   const [positionY, setPositionY] = useState(660);
   const starshipStyle = {
-    height: positionY,
-    width: positionX,
+    top: positionY,
+    left: positionX,
+    width: "auto",
+    height: "auto",
   };
   return (
     <div>
       <div className="hexagone-container">
-        <HexGridDemo setPositionX={setPositionX} setPositionY={setPositionY} />
         <div className="circle-section"></div>
         <div className="circle-section first-section"></div>
         <div className="circle-section second-section"></div>
@@ -28,9 +29,9 @@ const GameWheel = () => {
             <Image
               src={arrowImage}
               alt="starship image"
-              width={40}
-              height={40}
-              zIndex={3}
+              width={20}
+              height={20}
+              zIndex={7}
             />
           </div>
         </div>

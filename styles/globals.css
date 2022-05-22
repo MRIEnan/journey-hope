@@ -2,7 +2,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  background-color: aquamarine;
+  background: rgb(18,61,120);
+  background: linear-gradient(90deg, rgba(18,61,120,1) 0%, rgba(21,37,81,1) 100%);
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -24,55 +25,56 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
+  background-color: transparent;
   border-radius: 50%;
   overflow: hidden;
   position: relative;
-  border: 3px solid rgba(0, 0, 0, .55);
+  border: 3px solid rgba(255, 255, 255, .55);
 }
 
 
 /* hexagone container circle section  */
 .circle-section{
   position: absolute;
-  border: 3px solid rgba(0, 0, 0, .55);
+  border: 1px solid rgba(255, 255, 255, 0.45);
   background-color: transparent;
   border-radius: 50%;
+  z-index: 3;
 }
 
 .first-section{
   width: 80%;
   height: 80%;
   background-color: transparent;
-  z-index: -1;
+  z-index: 3;
 }
 .second-section{
   width: 60%;
   height: 60%;
   background-color: transparent;
-  z-index: -1;
+  z-index: 3;
 }
 .third-section{
   width: 40%;
   height: 40%;
   background-color: transparent;
-  z-index: -1;
+  z-index: 3;
 }
 .fourth-section{
   width: 20%;
   height: 20%;
   background-color: transparent;
-  z-index: -1;
+  z-index: 3;
 }
 
 /* hexagone container vertical section  */
 .vertical-section{
   position: absolute;
   /* border: 2px solid red ; */
-  border: 2px solid rgba(0, 0, 0, .55);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   height: 100%;
   background-color: transparent;
-  z-index: -1;
+  z-index: 3;
 }
 .two-section{
   transform: rotateZ(45deg);
@@ -93,13 +95,10 @@ a {
 
 .spaceship-container{
   position: absolute;
-  display: flex;
   background-color: blue;
-  z-index: 2;
+  z-index: 4;
   left: 0px;
   top: 0px;
-  justify-content: flex-end;
-  align-items: flex-end;
   /* left: calc( 50% - 20px); */
 }
 
@@ -108,7 +107,6 @@ a {
   position: relative;
   left: 10px;
   bottom: -14px;
-  z-index: 2;
 }
 /* .spaceship-icon{
   background-color: red;

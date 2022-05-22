@@ -10,8 +10,8 @@ const HexGridDemo = ({ setPositionX, setPositionY }) => {
       return {
         style: {
           // fill: "rgb(0, 255, 21)",
-          fill: "transparent",
-          stroke: "#007aff",
+          fill: "rgba(255,255,255,0.2)",
+          stroke: "rgba(255,255,255,0.35)",
           zIndex: "6",
         },
         /* style: {
@@ -39,8 +39,8 @@ const HexGridDemo = ({ setPositionX, setPositionY }) => {
         style: {
           // fill: hexagon==finalPosition?"rgb(0, 255, 21)":"transparent",
           // fill: "rgb(250, 125, 101)",
-          fill: "transparent",
-          stroke: "#007aff",
+          fill: "rgba(255,255,255,0.2)",
+          stroke: "rgba(255,255,255,0.35)",
           zIndex: "6",
         },
         /* style: {
@@ -63,23 +63,24 @@ const HexGridDemo = ({ setPositionX, setPositionY }) => {
     } else {
       return {
         style: {
-          fill: "transparent",
+          fill: "rgba(255,255,255,0.2)",
           // fill: hexagon==finalPosition?"rgb(0, 255, 21)":"transparent",
           // fill: hexagon==initialPosition?"rgb(250, 125, 101)":"transparent",
-          stroke: "#007aff",
-          zIndex: 6
+          stroke: "rgba(255,255,255,0.35)",
+          zIndex: "6",
         },
         /* style: {
               fill: "#007aff",
               stroke: "white"
             }, */
         onClick: (e) => {
+          setPositionX(e.clientX);
+          setPositionY(e.clientY);
           setInitialPosition(finalPosition);
           setFinalPosition(hexagon);
           alert(`new loacation id ${hexagon}`);
           console.log(`width ${e.clientX} height ${e.clientY}`);
-          setPositionX(e.clientX);
-          setPositionY(e.clientY);
+          
           // if(initialPosition){
           // setInitialPosition(hexagon);
           // setFinalPosition(initialPosition);
