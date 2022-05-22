@@ -27,46 +27,51 @@ a {
   border-radius: 50%;
   overflow: hidden;
   position: relative;
-  border: 3px solid red;
+  border: 3px solid rgba(0, 0, 0, .55);
 }
 
 
 /* hexagone container circle section  */
 .circle-section{
   position: absolute;
-  border: 3px solid red;
+  border: 3px solid rgba(0, 0, 0, .55);
   background-color: transparent;
   border-radius: 50%;
-  z-index: -1;
 }
 
 .first-section{
   width: 80%;
   height: 80%;
   background-color: transparent;
+  z-index: -1;
 }
 .second-section{
   width: 60%;
   height: 60%;
   background-color: transparent;
+  z-index: -1;
 }
 .third-section{
   width: 40%;
   height: 40%;
   background-color: transparent;
+  z-index: -1;
 }
 .fourth-section{
   width: 20%;
   height: 20%;
   background-color: transparent;
+  z-index: -1;
 }
 
 /* hexagone container vertical section  */
 .vertical-section{
   position: absolute;
-  border: 2px solid red ;
+  /* border: 2px solid red ; */
+  border: 2px solid rgba(0, 0, 0, .55);
   height: 100%;
   background-color: transparent;
+  z-index: -1;
 }
 .two-section{
   transform: rotateZ(45deg);
@@ -80,23 +85,29 @@ a {
 
 .hexagone-single{
   /* background-color: rgb(98, 0, 255); */
-  fill: rgb(0, 255, 21);
-  border-color: aqua;
+  /* border-color: aqua; */
   z-index: 5;
   /* background-color: rgba(0, 0, 0, .44); */
 }
 
 .spaceship-container{
-  background-color: transparent;
   position: absolute;
-  height: 100%;
-  width: 100%;
-  background-color: transparent;
+  display: flex;
+  /* background-color: blue; */
   z-index: -1;
-  /* bottom: -15px; */
+  left: 0px;
+  top: 0px;
+  justify-content: flex-end;
+  align-items: flex-end;
   /* left: calc( 50% - 20px); */
 }
 
+.starship{
+  /* background-color: aquamarine; */
+  position: relative;
+  left: 10px;
+  bottom: -14px;
+}
 /* .spaceship-icon{
   background-color: red;
   position: relative;
