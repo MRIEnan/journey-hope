@@ -12,7 +12,7 @@ const HexGridDemo = ({ setPositionX, setPositionY }) => {
           // fill: "rgb(0, 255, 21)",
           fill: "transparent",
           stroke: "#007aff",
-          zIndex: "-1",
+          zIndex: "6",
         },
         /* style: {
           fill: "#007aff",
@@ -41,7 +41,7 @@ const HexGridDemo = ({ setPositionX, setPositionY }) => {
           // fill: "rgb(250, 125, 101)",
           fill: "transparent",
           stroke: "#007aff",
-          zIndex: "-1",
+          zIndex: "6",
         },
         /* style: {
             fill: "#007aff",
@@ -67,6 +67,7 @@ const HexGridDemo = ({ setPositionX, setPositionY }) => {
           // fill: hexagon==finalPosition?"rgb(0, 255, 21)":"transparent",
           // fill: hexagon==initialPosition?"rgb(250, 125, 101)":"transparent",
           stroke: "#007aff",
+          zIndex: 6
         },
         /* style: {
               fill: "#007aff",

@@ -2,6 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
+  background-color: aquamarine;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -23,7 +24,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: red; */
+  background-color: black;
   border-radius: 50%;
   overflow: hidden;
   position: relative;
@@ -94,7 +95,7 @@ a {
   position: absolute;
   display: flex;
   /* background-color: blue; */
-  z-index: -1;
+  z-index: 4;
   left: 0px;
   top: 0px;
   justify-content: flex-end;
