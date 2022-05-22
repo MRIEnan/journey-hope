@@ -2,9 +2,8 @@ import times from "lodash/times";
 import React, { useState } from "react";
 import HexagonGrid from "./hexagongrid.js";
 
-const HexGridDemo = ({ setPositionX, setPositionY }) => {
-  const [finalPosition, setFinalPosition] = useState(696);
-  const [initialPosition, setInitialPosition] = useState(696);
+const HexGridDemo = ({ setPositionX, setPositionY , finalPosition, setFinalPosition, initialPosition, setInitialPosition}) => {
+  
   const getHexProps = (hexagon) => {
     if (hexagon == finalPosition) {
       return {

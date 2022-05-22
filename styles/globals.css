@@ -96,7 +96,7 @@ a {
 .spaceship-container{
   position: absolute;
   background-color: blue;
-  z-index: 4;
+  z-index: 11;
   left: 0px;
   top: 0px;
   /* left: calc( 50% - 20px); */
@@ -114,3 +114,131 @@ a {
   bottom: 0;
   left: 500px;
 } */
+
+.destination{
+  position: absolute;
+  left: 50%-30px;
+  top: 0px;
+  border: 1px solid red;
+  z-index: 7;
+}
+
+.p1{
+  position: absolute;
+  left: 12%;
+  top: 57%;
+  border: 1px solid red;
+  z-index: 7;
+}
+
+.p2{
+  position: absolute;
+  left: 21%;
+  top: 14%;
+  border: 1px solid red;
+  z-index: 7;
+}
+
+.p3{
+  position: absolute;
+  left: 50%-30px;
+  top: 15%;
+  border: 1px solid red;
+  z-index: 7;
+}
+
+.p4{
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  border: 1px solid red;
+  z-index: 7;
+}
+
+.p5{
+  position: absolute;
+  left: 32%;
+  top: 67%;
+  border: 1px solid red;
+  z-index: 7;
+}
+
+.p6{
+  position: absolute;
+  left: 60%;
+  top: 78%;
+  border: 1px solid red;
+  z-index: 7;
+}
+
+.p7{
+  position: absolute;
+  left: 57%;
+  top: 57%;
+  border: 1px solid red;
+  z-index: 7;
+}
+
+.p8{
+  position: absolute;
+  left: 14%;
+  top: 30%;
+  border: 1px solid red;
+  z-index: 7;
+}
+
+.p9{
+  position: absolute;
+  left: 86%;
+  top: 32%;
+  border: 1px solid red;
+  z-index: 7;
+}
+
+.p10{
+  position: absolute;
+  left: 37%;
+  top: 35%;
+  border: 1px solid red;
+  z-index: 7;
+}
+
+.p11{
+  position: absolute;
+  left: 75%;
+  top: 65%;
+  border: 1px solid red;
+  z-index: 7;
+}
+
+.p12{
+  position: absolute;
+  left: 60%;
+  top: 12%;
+  border: 1px solid red;
+  z-index: 7;
+}
+
+.p13{
+  position: absolute;
+  left: 20%;
+  top: 77%;
+  border: 1px solid red;
+  z-index: 7;
+}
+
+.p14{
+  position: absolute;
+  left: 85%;
+  top: 50%;
+  border: 1px solid red;
+  z-index: 7;
+}
+
+.p15{
+  position: absolute;
+  left: 68%;
+  top: 37%;
+  border: 1px solid red;
+  z-index: 7;
+}
