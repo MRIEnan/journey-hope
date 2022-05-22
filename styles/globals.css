@@ -94,8 +94,8 @@ a {
 .spaceship-container{
   position: absolute;
   display: flex;
-  /* background-color: blue; */
-  z-index: 4;
+  background-color: blue;
+  z-index: 2;
   left: 0px;
   top: 0px;
   justify-content: flex-end;
@@ -108,6 +108,7 @@ a {
   position: relative;
   left: 10px;
   bottom: -14px;
+  z-index: 2;
 }
 /* .spaceship-icon{
   background-color: red;
