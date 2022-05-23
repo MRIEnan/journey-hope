@@ -243,3 +243,15 @@ a {
   border: 1px solid red;
   z-index: 7;
 }
+
+.circleSvg-container{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+}
+
+.cls-1{
+  fill: transparent;
+  stroke: blue;
+}

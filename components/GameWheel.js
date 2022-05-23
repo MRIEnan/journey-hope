@@ -18,8 +18,10 @@ import p7Image from "../assets/images/journy-home/p7.png";
 import p8Image from "../assets/images/journy-home/p8.png";
 import p9Image from "../assets/images/journy-home/p9.png";
 import HexGridDemo from "./Grid";
+import CircleSvg from "./CircleSvg";
 
 const GameWheel = () => {
+  const [sectorName,setSectorName] = useState("sector1");
   const [positionX, setPositionX] = useState(335);
   const [positionY, setPositionY] = useState(660);
   const [hexagone, setHexagone] = useState(0);
@@ -54,6 +56,8 @@ const GameWheel = () => {
         <div className="circle-section second-section"></div>
         <div className="circle-section third-section"></div>
         <div className="circle-section fourth-section"></div> */}
+        
+        <CircleSvg setPositionX={setPositionX} setPositionY={setPositionY}></CircleSvg>
         <div className="vertical-section one-section"></div>
         <div className="vertical-section two-section"></div>
         <div className="vertical-section three-section"></div>
