@@ -96,6 +96,9 @@ const GameWheel = () => {
     <div className="gamewheel-main-container">
       <div className="hexagone-container">
         <HexGridDemo
+        liteYear={liteYear}
+        timeToMove={timeToMove}s
+        liteYearDuration={liteYearDuration}
           finalPosition={finalPosition}
           setFinalPosition={setFinalPosition}
           initialPosition={initialPosition}
@@ -290,6 +293,7 @@ const GameWheel = () => {
       <h1>liteyear {liteYear}</h1>
       <h2>Liteyear Time { liteYearDuration }</h2>
       <h3>Moving Time {timeToMove}</h3>
+      <button onClick={()=>{router.push('/play')}}>home</button>
       </div>
     </div>
   );

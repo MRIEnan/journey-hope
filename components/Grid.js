@@ -2,8 +2,17 @@ import times from "lodash/times";
 import React from "react";
 import HexagonGrid from "./hexagongrid.js";
 
-const HexGridDemo = ({ setPositionX, setPositionY , finalPosition, setFinalPosition, initialPosition, setInitialPosition}) => {
-  
+const HexGridDemo = ({
+  setPositionX,
+  setPositionY,
+  liteYear,
+  timeToMove,
+  liteYearDuration,
+  finalPosition,
+  setFinalPosition,
+  initialPosition,
+  setInitialPosition,
+}) => {
   const getHexProps = (hexagon) => {
     if (hexagon == finalPosition) {
       return {
@@ -18,21 +27,26 @@ const HexGridDemo = ({ setPositionX, setPositionY , finalPosition, setFinalPosit
           stroke: "white"
         }, */
         onClick: (e) => {
-          console.log(e);
-          const hexId = window.document.getElementById(`${hexagon}text`);
-          console.log(`hello ${hexId.target}`);
-          if (hexagon != finalPosition) {
-            setInitialPosition(finalPosition);
-            setFinalPosition(hexagon);
-            alert(`new loacation id ${hexagon}`);
+          if (timeToMove > 0) {
+            console.log(e);
+            const hexId = window.document.getElementById(`${hexagon}text`);
+            console.log(`hello ${hexId.target}`);
+            if (hexagon != finalPosition) {
+              setInitialPosition(finalPosition);
+              setFinalPosition(hexagon);
+              alert(`new loacation id ${hexagon}`);
+            }
+            // if(initialPosition){
+            // setInitialPosition(hexagon);
+            // setFinalPosition(initialPosition);
+            // }
+            // setPositionX(e.clientX);
+            // setPositionY(e.clientY);
+            // alert(`Hexagon n.${hexagon} has been clicked`)
           }
-          // if(initialPosition){
-          // setInitialPosition(hexagon);
-          // setFinalPosition(initialPosition);
-          // }
-          // setPositionX(e.clientX);
-          // setPositionY(e.clientY);
-          // alert(`Hexagon n.${hexagon} has been clicked`)
+          else{
+            alert("time over");
+          }
         },
       };
     } else if (hexagon == initialPosition) {
@@ -49,17 +63,22 @@ const HexGridDemo = ({ setPositionX, setPositionY , finalPosition, setFinalPosit
             stroke: "white"
           }, */
         onClick: (e) => {
-          console.log(e);
-          setInitialPosition(finalPosition);
-          setFinalPosition(hexagon);
-          alert(`new loacation id ${hexagon}`);
-          // setPositionX(e.clientX);
-          // setPositionY(e.clientY);
-          // if(initialPosition){
+          if (timeToMove > 0) {
+            console.log(e);
+            setInitialPosition(finalPosition);
+            setFinalPosition(hexagon);
+            alert(`new loacation id ${hexagon}`);
+            // setPositionX(e.clientX);
+            // setPositionY(e.clientY);
+            // if(initialPosition){
             // setInitialPosition(hexagon);
             // setFinalPosition(initialPosition);
-          // }
-          // alert(`Hexagon n.${hexagon} has been clicked`)
+            // }
+            // alert(`Hexagon n.${hexagon} has been clicked`)
+          }
+          else{
+            alert("time over");
+          }
         },
       };
     } else {
@@ -75,20 +94,25 @@ const HexGridDemo = ({ setPositionX, setPositionY , finalPosition, setFinalPosit
               fill: "#007aff",
               stroke: "white"
             }, */
-            onClick: (e) => {
-          console.log(e);
-          setPositionX(e.clientX);
-          setPositionY(e.clientY);
-          setInitialPosition(finalPosition);
-          setFinalPosition(hexagon);
-          alert(`new loacation id ${hexagon}`);
-          console.log(`width ${e.clientX} height ${e.clientY}`);
-          
-          // if(initialPosition){
-          // setInitialPosition(hexagon);
-          // setFinalPosition(initialPosition);
-          // }
-          // alert(`Hexagon n.${hexagon} has been clicked`)
+        onClick: (e) => {
+          if (timeToMove > 0) {
+            console.log(e);
+            setPositionX(e.clientX);
+            setPositionY(e.clientY);
+            setInitialPosition(finalPosition);
+            setFinalPosition(hexagon);
+            alert(`new loacation id ${hexagon}`);
+            console.log(`width ${e.clientX} height ${e.clientY}`);
+
+            // if(initialPosition){
+            // setInitialPosition(hexagon);
+            // setFinalPosition(initialPosition);
+            // }
+            // alert(`Hexagon n.${hexagon} has been clicked`)
+          }
+          else{
+            alert("time over");
+          }
         },
       };
     }
@@ -119,7 +143,7 @@ const HexGridDemo = ({ setPositionX, setPositionY , finalPosition, setFinalPosit
       hexagons={hexagons}
       hexProps={getHexProps}
       renderHexagonContent={renderHexagonContent}
-      setPositionX={setPositionX} 
+      setPositionX={setPositionX}
       setPositionY={setPositionY}
     />
   );
