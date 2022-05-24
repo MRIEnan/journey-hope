@@ -137,8 +137,8 @@ const GameWheel = () => {
             name="earth"
             src={destImage}
             alt="dest image"
-            width={60}
-            height={60}
+            width={20}
+            height={20}
             zIndex={10}
           />
         </div>
@@ -147,8 +147,8 @@ const GameWheel = () => {
             src={p1Image}
             name="p1"
             alt="p1 image"
-            width={60}
-            height={60}
+            width={20}
+            height={20}
             zIndex={7}
           />
         </div>
@@ -157,8 +157,8 @@ const GameWheel = () => {
             src={p2Image}
             name="p2 image"
             alt="p2 image"
-            width={60}
-            height={60}
+            width={20}
+            height={20}
             zIndex={7}
           />
         </div>
@@ -167,8 +167,8 @@ const GameWheel = () => {
             src={p3Image}
             name={"p3 image"}
             alt="p3 image"
-            width={60}
-            height={60}
+            width={20}
+            height={20}
             zIndex={7}
           />
         </div>
@@ -177,8 +177,8 @@ const GameWheel = () => {
             src={p4Image}
             name="p4 image"
             alt="p4 image"
-            width={80}
-            height={80}
+            width={20}
+            height={20}
             zIndex={7}
           />
         </div>
@@ -187,8 +187,8 @@ const GameWheel = () => {
             src={p5Image}
             alt="p5 image"
             name="p5 image"
-            width={70}
-            height={60}
+            width={20}
+            height={20}
             zIndex={7}
           />
         </div>
@@ -197,8 +197,8 @@ const GameWheel = () => {
             src={p6Image}
             alt="p6 image"
             name="p6 image"
-            width={70}
-            height={60}
+            width={20}
+            height={20}
             zIndex={7}
           />
         </div>
@@ -207,8 +207,8 @@ const GameWheel = () => {
             src={p7Image}
             alt="p7 image"
             name="p7 image"
-            width={60}
-            height={60}
+            width={20}
+            height={20}
             zIndex={7}
           />
         </div>
@@ -217,8 +217,8 @@ const GameWheel = () => {
             src={p8Image}
             alt="p8 image"
             name="p8 image"
-            width={40}
-            height={40}
+            width={20}
+            height={20}
             zIndex={7}
           />
         </div>
@@ -227,8 +227,8 @@ const GameWheel = () => {
             src={p9Image}
             alt="p9 image"
             name="p9 image"
-            width={40}
-            height={40}
+            width={20}
+            height={20}
             zIndex={7}
           />
         </div>
@@ -237,8 +237,8 @@ const GameWheel = () => {
             src={p10Image}
             alt="p10 image"
             name="p10 image"
-            width={50}
-            height={50}
+            width={20}
+            height={20}
             zIndex={7}
           />
         </div>
@@ -247,8 +247,8 @@ const GameWheel = () => {
             src={p11Image}
             alt="p11 image"
             name="p11 image"
-            width={50}
-            height={50}
+            width={20}
+            height={20}
             zIndex={7}
           />
         </div>
@@ -257,8 +257,8 @@ const GameWheel = () => {
             src={p12Image}
             alt="p12 image"
             name="p12 image"
-            width={60}
-            height={60}
+            width={20}
+            height={20}
             zIndex={7}
           />
         </div>
@@ -267,8 +267,8 @@ const GameWheel = () => {
             src={p13Image}
             alt="p13 image"
             name="p13 image"
-            width={60}
-            height={60}
+            width={20}
+            height={20}
             zIndex={7}
           />
         </div>
@@ -277,8 +277,8 @@ const GameWheel = () => {
             src={p14Image}
             alt="p14 image"
             name="p14 image"
-            width={50}
-            height={50}
+            width={20}
+            height={20}
             zIndex={7}
           />
         </div>
@@ -287,8 +287,8 @@ const GameWheel = () => {
             src={p15Image}
             alt="p15 image"
             name="p15 image"
-            width={60}
-            height={60}
+            width={20}
+            height={20}
             zIndex={7}
           />
         </div>
