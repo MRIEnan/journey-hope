@@ -1,5 +1,6 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import { useRouter } from "next/router";
+import React, { useState,useEffect } from "react";
 import arrowImage from "../assets/images/journy-home/arrow.png";
 import destImage from "../assets/images/journy-home/one.png";
 import p1Image from "../assets/images/journy-home/p1.png";
@@ -27,12 +28,63 @@ const GameWheel = () => {
   const [hexagone, setHexagone] = useState(0);
   const [finalPosition, setFinalPosition] = useState(696);
   const [initialPosition, setInitialPosition] = useState(696);
+
+  const [liteYear, setLiteYear] = useState(null);
+  const [timeToMove, setTimeToMove] = useState(null);
+  const [liteYearDuration,setLiteYearDuration] = useState(180);
+  const router = useRouter();
+
   const starshipStyle = {
     top: positionY,
     left: positionX,
     width: "auto",
     height: "auto",
   };
+
+  useEffect(() => {
+    const liteYearTime = localStorage.getItem("remaining-liteyear");
+    setLiteYear(liteYearTime);
+    const timeToEndLiteYearDef =
+      parseInt(localStorage.getItem("lite-year-end-time")) -
+      new Date().getTime();
+    const timeDefMin = new Date(timeToEndLiteYearDef).getMinutes();
+    const timeDefSec = new Date(timeToEndLiteYearDef).getSeconds();
+    const totalTime = timeDefMin * 60 + timeDefSec;
+    console.log('setLiteYearDuration ',totalTime);
+    setLiteYearDuration(totalTime);
+    console.log(timeToEndLiteYearDef);
+    const timeToMoveDef =
+      parseInt(localStorage.getItem("position-time")) -
+      new Date().getTime();
+    const timeMoveDefMin = new Date(timeToMoveDef).getMinutes();
+    const timeMoveDefSec = new Date(timeToMoveDef).getSeconds();
+    const totalMoveTime = timeMoveDefMin * 60 + timeMoveDefSec;
+    console.log(totalMoveTime);
+    setTimeToMove(totalMoveTime);
+    // setTimeToMove(10);
+    console.log('setTimeToMove  ',timeToMoveDef);
+  }, []);
+
+  useEffect(() => {
+    if(liteYearDuration<1){
+        console.log('over');
+        setLiteYear(liteYear--);
+        const nDate = new Date();
+        console.log('init Date',nDate);
+        let newDate = nDate.setSeconds(nDate.getSeconds()+10);
+        localStorage.setItem('lite-year-poster-time',newDate);
+        localStorage.setItem('remaining-liteyear',liteYear);
+        router.push('/liteyearpreview');
+    }
+    const myInterval = setInterval(() => {
+      setLiteYearDuration(liteYearDuration--);
+      setTimeToMove(timeToMove--)
+    }, 1000);
+    return () => {
+      clearInterval(myInterval);
+    };
+  }, [liteYearDuration]);
+
   const planet = (e) => {
     alert(`Planet Arrived ${e.target.name}!`);
     setPositionX(e.clientX);
@@ -41,7 +93,7 @@ const GameWheel = () => {
     // setFinalPosition(hexagon);
   };
   return (
-    <div>
+    <div className="gamewheel-main-container">
       <div className="hexagone-container">
         <HexGridDemo
           finalPosition={finalPosition}
@@ -57,7 +109,7 @@ const GameWheel = () => {
         <div className="circle-section third-section"></div>
         <div className="circle-section fourth-section"></div> */}
         
-        <CircleSvg setPositionX={setPositionX} setPositionY={setPositionY}></CircleSvg>
+        {/* <CircleSvg setPositionX={setPositionX} setPositionY={setPositionY}></CircleSvg> */}
         <div className="vertical-section one-section"></div>
         <div className="vertical-section two-section"></div>
         <div className="vertical-section three-section"></div>
@@ -233,6 +285,11 @@ const GameWheel = () => {
             zIndex={7}
           />
         </div>
+      </div>
+      <div>
+      <h1>liteyear {liteYear}</h1>
+      <h2>Liteyear Time { liteYearDuration }</h2>
+      <h3>Moving Time {timeToMove}</h3>
       </div>
     </div>
   );

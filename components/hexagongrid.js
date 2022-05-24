@@ -4,6 +4,7 @@ import times from "lodash/times";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import Hexagon from "react-hexagon";
+import CircleSvg from "./CircleSvg";
 
 const getGridDimensions = (gridWidth, gridHeight, N) => {
   const a = (5 * gridHeight) / (gridWidth * Math.sqrt(2));
@@ -34,6 +35,8 @@ const HexagonGrid = (props) => {
     gridWidth,
     renderHexagonContent,
     hexProps,
+    setPositionX,
+    setPositionY,
     x,
     y
   } = props;
@@ -77,18 +80,21 @@ const HexagonGrid = (props) => {
   };
 
   return (
+    <>
     <svg width={gridWidth} height={gridHeight} x={x} y={y}>
       {times(state.rows, (row) => {
         const remaining = hexagons.length - row * state.columns;
         const columns = remaining < state.columns ? remaining : state.columns;
         const rowDim = getRowDimensions(row);
         return (
+          <>
+          {/* <CircleSvg setPositionX={setPositionX} setPositionY={setPositionY}/> */}
           <svg
             key={row}
             width={rowDim.width}
             height={rowDim.height}
             y={rowDim.y}
-          >
+            >
             {times(columns, (col) => {
               const iHexagon = row * state.columns + col;
               const hexagon = hexagons[iHexagon];
@@ -96,10 +102,10 @@ const HexagonGrid = (props) => {
               const _hexProps = tryInvoke(hexProps, [hexagon], hexProps);
               return (
                 <svg
-                  key={iHexagon}
-                  height={hexDim.height}
-                  width={hexDim.width}
-                  x={`${hexDim.x}px`}
+                key={iHexagon}
+                height={hexDim.height}
+                width={hexDim.width}
+                x={`${hexDim.x}px`}
                 >
                   <Hexagon {..._hexProps} flatTop>
                     {tryInvoke(renderHexagonContent, [hexagon], <tspan />)}
@@ -108,9 +114,12 @@ const HexagonGrid = (props) => {
               );
             })}
           </svg>
+          </>
+          
         );
       })}
     </svg>
+    </>
   );
 };
 

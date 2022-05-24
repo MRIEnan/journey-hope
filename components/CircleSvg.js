@@ -11,13 +11,12 @@ const CircleSvg = ({ setPositionX, setPositionY}) => {
   };
   return (
     
-      <svg className="circleSvg-container"
+      <svg
         id="Layer_1"
         data-name="Layer 1"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 823.28 823.28"
       >
-        <title>Untitled-4</title>
         <path
           className="cls-1"
           d="M468.42,26.32v76.31A333.16,333.16,0,0,0,232.1,200.52l-54-54A409.22,409.22,0,0,1,468.42,26.32Z"

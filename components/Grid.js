@@ -18,6 +18,7 @@ const HexGridDemo = ({ setPositionX, setPositionY , finalPosition, setFinalPosit
           stroke: "white"
         }, */
         onClick: (e) => {
+          console.log(e);
           const hexId = window.document.getElementById(`${hexagon}text`);
           console.log(`hello ${hexId.target}`);
           if (hexagon != finalPosition) {
@@ -48,14 +49,15 @@ const HexGridDemo = ({ setPositionX, setPositionY , finalPosition, setFinalPosit
             stroke: "white"
           }, */
         onClick: (e) => {
+          console.log(e);
           setInitialPosition(finalPosition);
           setFinalPosition(hexagon);
           alert(`new loacation id ${hexagon}`);
           // setPositionX(e.clientX);
           // setPositionY(e.clientY);
           // if(initialPosition){
-          // setInitialPosition(hexagon);
-          // setFinalPosition(initialPosition);
+            // setInitialPosition(hexagon);
+            // setFinalPosition(initialPosition);
           // }
           // alert(`Hexagon n.${hexagon} has been clicked`)
         },
@@ -73,7 +75,8 @@ const HexGridDemo = ({ setPositionX, setPositionY , finalPosition, setFinalPosit
               fill: "#007aff",
               stroke: "white"
             }, */
-        onClick: (e) => {
+            onClick: (e) => {
+          console.log(e);
           setPositionX(e.clientX);
           setPositionY(e.clientY);
           setInitialPosition(finalPosition);
@@ -116,6 +119,8 @@ const HexGridDemo = ({ setPositionX, setPositionY , finalPosition, setFinalPosit
       hexagons={hexagons}
       hexProps={getHexProps}
       renderHexagonContent={renderHexagonContent}
+      setPositionX={setPositionX} 
+      setPositionY={setPositionY}
     />
   );
 };
