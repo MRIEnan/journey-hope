@@ -86,6 +86,10 @@ const GameWheel = () => {
   }, [liteYearDuration]);
 
   const planet = (e) => {
+    if(timeToMove<11){
+      alert("moving time over");
+      return;
+    }
     alert(`Planet Arrived ${e.target.name}!`);
     setPositionX(e.clientX);
     setPositionY(e.clientY);

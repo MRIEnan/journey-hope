@@ -25,8 +25,8 @@ const LiteYearPoster = () => {
         const nDate = new Date();
         console.log('init Date',nDate);
         let newDate = nDate.setSeconds(nDate.getSeconds()+10);
-        let positionTime = nDate.setSeconds(nDate.getSeconds()+10);
-        let liteYearEndTime = nDate.setSeconds(nDate.getSeconds()+5);
+        let positionTime = nDate.setSeconds(nDate.getSeconds()+5);
+        let liteYearEndTime = nDate.setSeconds(nDate.getSeconds()+10);
         localStorage.setItem('position-time',positionTime);
         localStorage.setItem('lite-year-end-time',liteYearEndTime);
         localStorage.setItem('remaining-liteyear',liteYear);
