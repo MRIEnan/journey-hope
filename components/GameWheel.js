@@ -30,6 +30,9 @@ const GameWheel = () => {
   const [finalPosition, setFinalPosition] = useState(696);
   const [initialPosition, setInitialPosition] = useState(696);
   const [raiderNumbers,setRaiderNumbers] = useState([]);
+  const [change,setChange] = useState(true);
+  const [raiderTotal,setRaiderTotal] = useState(0);
+  
 
 
   // liteyear info
@@ -49,6 +52,82 @@ const GameWheel = () => {
 
   // const timeDefMin = Math.floor((timeToStartDef % (1000 * 60 * 60)) / (1000 * 60));
   //   const timeDefSec = Math.floor((timeToStartDef % (1000 * 60)) / 1000);
+  useEffect(() => {
+    let randomNum = Math.floor(Math.random()*10);
+    if(randomNum<3){
+      randomNum=3;
+    }
+    else if(randomNum>10){
+      randomNum=10;
+    }
+    setRaiderTotal(randomNum);
+    setChange(!change);
+    let tNum = [];
+    for (let index = 100; index < 500; index++) {
+      tNum.push(index);      
+    }
+
+    function shuffle(array) {
+      let currentIndex = array.length,  randomIndex;
+      while (currentIndex != 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+        [array[currentIndex], array[randomIndex]] = [
+          array[randomIndex], array[currentIndex]];
+      }
+    
+      return array;
+    }
+
+    shuffle(tNum);
+    const newArr = []; 
+    console.log("tNum",tNum);
+    for (let index = 0; index < randomNum; index++) {
+      //condition pos is not be planet or those area
+      newArr.push(tNum[index]);
+    }
+    setRaiderNumbers([...newArr]);
+/*
+    const abc = [...Array(randomNum).keys()];
+      console.log("ABC:",abc);
+      const newArr = []; 
+      abc.map(()=>{
+        let num = Math.round(Math.random()*1000);
+        if(num>600){
+          num=600;
+        }
+        else if(num<60){
+          num=60;
+        }
+        newArr.push(num);
+      });
+      setRaiderNumbers([...newArr]);
+      console.log("RN:",[...newArr]);
+    console.log("RANDOM total",randomNum);*/
+
+  }, []);
+
+  // useEffect(() => {
+  //   if(raiderTotal){
+  //     alert("AAAAAAA");
+  //     const abc = [...Array(raiderTotal).keys()];
+  //     console.log("ABC:",abc);
+  //     const newArr = []; 
+  //     abc.map(()=>{
+  //       let num = Math.round(Math.random()*1000);
+  //       if(num>600){
+  //         num=600;
+  //       }
+  //       else if(num<60){
+  //         num=60;
+  //       }
+  //       newArr.push(num);
+  //     });
+  //     setRaiderNumbers([...newArr]);
+  //     console.log("RN:",raiderNumbers);
+  //   }
+  // }, [raiderTotal,change]);
+  
 
   useEffect(() => {
     const liteYearTime = localStorage.getItem("remaining-liteyear");
@@ -110,7 +189,7 @@ const GameWheel = () => {
       <div className="hexagone-container">
         <HexGridDemo
         liteYear={liteYear}
-        timeToMove={timeToMove}s
+        timeToMove={timeToMove}
         liteYearDuration={liteYearDuration}
           finalPosition={finalPosition}
           setFinalPosition={setFinalPosition}
@@ -118,6 +197,7 @@ const GameWheel = () => {
           setInitialPosition={setInitialPosition}
           setPositionX={setPositionX}
           setPositionY={setPositionY}
+          raiderNumbers={raiderNumbers}
         />
         {/* <div className="circle-section"></div>
         <div className="circle-section first-section"></div>

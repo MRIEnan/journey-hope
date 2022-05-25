@@ -12,9 +12,30 @@ const HexGridDemo = ({
   setFinalPosition,
   initialPosition,
   setInitialPosition,
+  raiderNumbers,
 }) => {
   const getHexProps = (hexagon) => {
+    if(raiderNumbers.includes(hexagon)){
+      return {
+        style: {
+          fill: "rgb(255, 0, 255)",
+          // fill: "rgba(255,255,255,0.2)",
+          stroke: "rgba(255,255,255,0.35)",
+          zIndex: "6",
+        },
+        onClick: (e) => {
+          if (timeToMove > 0) {
+            alert("raider")
+          }
+          else{
+            alert("time over");
+          }
+        },
+      }
+    }
+
     if (hexagon == finalPosition) {
+      console.log("raiderNumbers",raiderNumbers)
       return {
         style: {
           fill: "rgb(0, 255, 21)",
