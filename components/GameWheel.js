@@ -22,16 +22,21 @@ import HexGridDemo from "./Grid";
 import CircleSvg from "./CircleSvg";
 
 const GameWheel = () => {
+  // hexagone grid info
   const [sectorName,setSectorName] = useState("sector1");
   const [positionX, setPositionX] = useState(335);
   const [positionY, setPositionY] = useState(660);
   const [hexagone, setHexagone] = useState(0);
   const [finalPosition, setFinalPosition] = useState(696);
   const [initialPosition, setInitialPosition] = useState(696);
+  const [raiderNumbers,setRaiderNumbers] = useState([]);
 
+
+  // liteyear info
   const [liteYear, setLiteYear] = useState(null);
   const [timeToMove, setTimeToMove] = useState(null);
   const [liteYearDuration,setLiteYearDuration] = useState(180);
+
   const router = useRouter();
 
   const starshipStyle = {
@@ -41,24 +46,28 @@ const GameWheel = () => {
     height: "auto",
   };
 
+
+  // const timeDefMin = Math.floor((timeToStartDef % (1000 * 60 * 60)) / (1000 * 60));
+  //   const timeDefSec = Math.floor((timeToStartDef % (1000 * 60)) / 1000);
+
   useEffect(() => {
     const liteYearTime = localStorage.getItem("remaining-liteyear");
     setLiteYear(liteYearTime);
     const timeToEndLiteYearDef =
       parseInt(localStorage.getItem("lite-year-end-time")) -
       new Date().getTime();
-    const timeDefMin = new Date(timeToEndLiteYearDef).getMinutes();
-    const timeDefSec = new Date(timeToEndLiteYearDef).getSeconds();
-    const totalTime = timeDefMin * 60 + timeDefSec;
+    const timeDefMin = Math.floor((timeToEndLiteYearDef % (1000 * 60 * 60)) / (1000 * 60));
+    const timeDefSec = Math.floor((timeToEndLiteYearDef % (1000 * 60)) / 1000);
+    const totalTime = (timeDefMin * 60) + timeDefSec;
     console.log('setLiteYearDuration ',totalTime);
     setLiteYearDuration(totalTime);
     console.log(timeToEndLiteYearDef);
     const timeToMoveDef =
       parseInt(localStorage.getItem("position-time")) -
       new Date().getTime();
-    const timeMoveDefMin = new Date(timeToMoveDef).getMinutes();
-    const timeMoveDefSec = new Date(timeToMoveDef).getSeconds();
-    const totalMoveTime = timeMoveDefMin * 60 + timeMoveDefSec;
+    const timeMoveDefMin = Math.floor((timeToMoveDef % (1000 * 60 * 60)) / (1000 * 60));
+    const timeMoveDefSec = Math.floor((timeToMoveDef % (1000 * 60)) / 1000);
+    const totalMoveTime = (timeMoveDefMin * 60) + timeMoveDefSec;
     console.log(totalMoveTime);
     setTimeToMove(totalMoveTime);
     // setTimeToMove(10);
@@ -86,7 +95,7 @@ const GameWheel = () => {
   }, [liteYearDuration]);
 
   const planet = (e) => {
-    if(timeToMove<11){
+    if(timeToMove<0){
       alert("moving time over");
       return;
     }
