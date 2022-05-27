@@ -32,6 +32,11 @@ const GameWheel = () => {
   const [raiderNumbers,setRaiderNumbers] = useState([]);
   const [change,setChange] = useState(true);
   const [raiderTotal,setRaiderTotal] = useState(0);
+  const [area1,setArea1] = useState([259,275,260,276,261,277,262,245,246,247,170,171,156,200,215,230,216,186,201,237,231,217]);
+  const [area2,setArea2] = useState([286,302,287,303,301,318,316,317,333,332,331,346,347,348,362,363,271,272,273,288]);  
+  const [area3,setArea3] = useState([455,456,470,471,457,499,501,502,500,485,486,487,515,516,517,530,531,545]);
+  const [area4,setArea4] = useState([370,371,384,385,386,354,355,356,339,340,341,324,325,310,311,295]);
+  const [Planet,setPlanet] = useState([155,167,336,319,158,411,323,281,415,504,592,587,514,451,226]);
   
 
 
@@ -63,9 +68,13 @@ const GameWheel = () => {
     setRaiderTotal(randomNum);
     setChange(!change);
     let tNum = [];
-    for (let index = 100; index < 500; index++) {
+    for (let index = 100; index < 600; index++) {
+      if(Planet.includes(index) || area1.includes(index) || area2.includes(index) || area3.includes(index) || area4.includes(index)){
+        continue;
+      }
       tNum.push(index);      
     }
+    console.log(tNum);
 
     function shuffle(array) {
       let currentIndex = array.length,  randomIndex;
@@ -198,6 +207,11 @@ const GameWheel = () => {
           setPositionX={setPositionX}
           setPositionY={setPositionY}
           raiderNumbers={raiderNumbers}
+          area1={area1}
+          area2={area2}
+          area3={area3}
+          area4={area4}
+          Planet={Planet}
         />
         {/* <div className="circle-section"></div>
         <div className="circle-section first-section"></div>

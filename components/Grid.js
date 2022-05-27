@@ -13,8 +13,73 @@ const HexGridDemo = ({
   initialPosition,
   setInitialPosition,
   raiderNumbers,
+  area1,
+  area2,
+  area3,
+  area4,
+  Planet
 }) => {
   const getHexProps = (hexagon) => {
+    if(area1.includes(hexagon)){
+      return {
+        style: {
+          fill: "rgb(255, 120, 0)",
+          // fill: "rgba(255,255,255,0.2)",
+          stroke: "rgba(255,255,255,0.35)",
+          zIndex: "6",
+        },
+        onClick: (e) => {
+        },
+      }
+    }
+    if(area2.includes(hexagon)){
+      return {
+        style: {
+          fill: "gray",
+          // fill: "rgba(255,255,255,0.2)",
+          stroke: "rgba(255,255,255,0.35)",
+          zIndex: "6",
+        },
+        onClick: (e) => {
+        },
+      }
+    }
+    if(area3.includes(hexagon)){
+      return {
+        style: {
+          fill: "rgb(204, 164, 61)",
+          // fill: "rgba(255,255,255,0.2)",
+          stroke: "rgba(255,255,255,0.35)",
+          zIndex: "6",
+        },
+        onClick: (e) => {
+        },
+      }
+    }
+    if(area4.includes(hexagon)){
+      return {
+        style: {
+          fill: "rgb(204, 164, 61)",
+          // fill: "rgba(255,255,255,0.2)",
+          stroke: "rgba(255,255,255,0.35)",
+          zIndex: "6",
+        },
+        onClick: (e) => {
+        },
+      }
+    }
+    if(Planet.includes(hexagon)){
+      return {
+        style: {
+          fill: "rgb(0, 0, 255)",
+          // fill: "rgba(255,255,255,0.2)",
+          stroke: "rgba(255,255,255,0.35)",
+          zIndex: "6",
+        },
+        onClick: (e) => {
+        },
+      }
+    }
     if(raiderNumbers.includes(hexagon)){
       return {
         style: {
