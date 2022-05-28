@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import arrowImage from "../assets/images/journy-home/arrow.png";
 import destImage from "../assets/images/journy-home/one.png";
 import p1Image from "../assets/images/journy-home/p1.png";
@@ -23,27 +23,39 @@ import CircleSvg from "./CircleSvg";
 
 const GameWheel = () => {
   // hexagone grid info
-  const [sectorName,setSectorName] = useState("sector1");
+  const [sectorName, setSectorName] = useState("sector1");
   const [positionX, setPositionX] = useState(335);
   const [positionY, setPositionY] = useState(660);
   const [hexagone, setHexagone] = useState(0);
   const [finalPosition, setFinalPosition] = useState(696);
   const [initialPosition, setInitialPosition] = useState(696);
-  const [raiderNumbers,setRaiderNumbers] = useState([]);
-  const [change,setChange] = useState(true);
-  const [raiderTotal,setRaiderTotal] = useState(0);
-  const [area1,setArea1] = useState([259,275,260,276,261,277,262,245,246,247,170,171,156,200,215,230,216,186,201,237,231,217]);
-  const [area2,setArea2] = useState([286,302,287,303,301,318,316,317,333,332,331,346,347,348,362,363,271,272,273,288]);  
-  const [area3,setArea3] = useState([455,456,470,471,457,499,501,502,500,485,486,487,515,516,517,530,531,545]);
-  const [area4,setArea4] = useState([370,371,384,385,386,354,355,356,339,340,341,324,325,310,311,295]);
-  const [Planet,setPlanet] = useState([155,167,336,319,158,411,323,281,415,504,592,587,514,451,226]);
-  
-
+  const [raiderNumbers, setRaiderNumbers] = useState([]);
+  const [change, setChange] = useState(true);
+  const [raiderTotal, setRaiderTotal] = useState(0);
+  const [area1, setArea1] = useState([
+    259, 275, 260, 276, 261, 277, 262, 245, 246, 247, 170, 171, 156, 200, 215,
+    230, 216, 186, 201, 237, 231, 217,
+  ]);
+  const [area2, setArea2] = useState([
+    286, 302, 287, 303, 301, 318, 316, 317, 333, 332, 331, 346, 347, 348, 362,
+    363, 271, 272, 273, 288,
+  ]);
+  const [area3, setArea3] = useState([
+    455, 456, 470, 471, 457, 499, 501, 502, 500, 485, 486, 487, 515, 516, 517,
+    530, 531, 545,
+  ]);
+  const [area4, setArea4] = useState([
+    370, 371, 384, 385, 386, 354, 355, 356, 339, 340, 341, 324, 325, 310, 311,
+    295,
+  ]);
+  const [Planet, setPlanet] = useState([
+    155, 167, 336, 319, 158, 411, 323, 281, 415, 504, 592, 587, 514, 451, 226,
+  ]);
 
   // liteyear info
   const [liteYear, setLiteYear] = useState(null);
   const [timeToMove, setTimeToMove] = useState(null);
-  const [liteYearDuration,setLiteYearDuration] = useState(180);
+  const [liteYearDuration, setLiteYearDuration] = useState(180);
 
   const router = useRouter();
 
@@ -54,49 +66,56 @@ const GameWheel = () => {
     height: "auto",
   };
 
-
   // const timeDefMin = Math.floor((timeToStartDef % (1000 * 60 * 60)) / (1000 * 60));
   //   const timeDefSec = Math.floor((timeToStartDef % (1000 * 60)) / 1000);
   useEffect(() => {
-    let randomNum = Math.floor(Math.random()*10);
-    if(randomNum<3){
-      randomNum=3;
-    }
-    else if(randomNum>10){
-      randomNum=10;
+    let randomNum = Math.floor(Math.random() * 10);
+    if (randomNum < 3) {
+      randomNum = 3;
+    } else if (randomNum > 10) {
+      randomNum = 10;
     }
     setRaiderTotal(randomNum);
     setChange(!change);
     let tNum = [];
     for (let index = 100; index < 600; index++) {
-      if(Planet.includes(index) || area1.includes(index) || area2.includes(index) || area3.includes(index) || area4.includes(index)){
+      if (
+        Planet.includes(index) ||
+        area1.includes(index) ||
+        area2.includes(index) ||
+        area3.includes(index) ||
+        area4.includes(index)
+      ) {
         continue;
       }
-      tNum.push(index);      
+      tNum.push(index);
     }
     console.log(tNum);
 
     function shuffle(array) {
-      let currentIndex = array.length,  randomIndex;
+      let currentIndex = array.length,
+        randomIndex;
       while (currentIndex != 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex--;
         [array[currentIndex], array[randomIndex]] = [
-          array[randomIndex], array[currentIndex]];
+          array[randomIndex],
+          array[currentIndex],
+        ];
       }
-    
+
       return array;
     }
 
     shuffle(tNum);
-    const newArr = []; 
-    console.log("tNum",tNum);
+    const newArr = [];
+    console.log("tNum", tNum);
     for (let index = 0; index < randomNum; index++) {
       //condition pos is not be planet or those area
       newArr.push(tNum[index]);
     }
     setRaiderNumbers([...newArr]);
-/*
+    /*
     const abc = [...Array(randomNum).keys()];
       console.log("ABC:",abc);
       const newArr = []; 
@@ -113,7 +132,6 @@ const GameWheel = () => {
       setRaiderNumbers([...newArr]);
       console.log("RN:",[...newArr]);
     console.log("RANDOM total",randomNum);*/
-
   }, []);
 
   // useEffect(() => {
@@ -121,7 +139,7 @@ const GameWheel = () => {
   //     alert("AAAAAAA");
   //     const abc = [...Array(raiderTotal).keys()];
   //     console.log("ABC:",abc);
-  //     const newArr = []; 
+  //     const newArr = [];
   //     abc.map(()=>{
   //       let num = Math.round(Math.random()*1000);
   //       if(num>600){
@@ -136,7 +154,83 @@ const GameWheel = () => {
   //     console.log("RN:",raiderNumbers);
   //   }
   // }, [raiderTotal,change]);
-  
+  const getRadius = (midX,midY,posX,posY,quarter=1) =>{
+    const dif = Math.sqrt(Math.pow(Math.abs(midX-posX),2)+Math.pow(Math.abs(midY-posY),2))
+    let ans;
+    if(dif<50){
+      ans = 7 + (quarter-1)*7;
+    }
+    else if(dif<90){
+      ans = 6 + (quarter-1)*7
+    }
+    else if(dif<140){
+      ans = 5 + (quarter-1)*7
+    }
+    else if(dif<190){
+      ans = 4 + (quarter-1)*7
+    }
+    else if(dif<240){
+      ans = 3 + (quarter-1)*7
+    }
+    else if(dif<290){
+      ans = 2 + (quarter-1)*7
+    }
+    else{
+      ans = 1 + (quarter-1)*7
+    }
+    return ans;
+  }
+
+  const getSectorName = (x = 650, y = 650) => {
+    const midX = 330;
+    const midY = 330;
+    let posX = x;
+    let posY = y;
+    if (x < midX && y < midY) {
+      if (x <= y) {
+        const dif = getRadius(midX,midY,posX,posY,1);
+        alert(`sector is ${dif}`)
+      } 
+      else {
+        const dif = getRadius(midX,midY,posX,posY,2);
+        alert(`sector is ${dif}`)
+      }
+    } else if (x < midX && y > midY) {
+      if (x + y >= midX + midY) {
+        const dif = getRadius(midX,midY,posX,posY,7);
+        alert(`sector is ${dif}`)
+        // alert("sector is left down 7");
+      } else {
+        const dif = getRadius(midX,midY,posX,posY,8);
+        alert(`sector is ${dif}`)
+        // alert("sector is left down 8");
+      }
+    } else if (x > midX && y < midY) {
+      if (x + y <= midX + midY) {
+        const dif = getRadius(midX,midY,posX,posY,3);
+        alert(`sector is ${dif}`)
+        // alert("sector is right up 3");
+      } else {
+        const dif = getRadius(midX,midY,posX,posY,4);
+        alert(`sector is ${dif}`)
+        // alert("sector is right up 4");
+      }
+    } else if (x > midX && y > midY) {
+      if (x > y) {
+        const dif = getRadius(midX,midY,posX,posY,5);
+        alert(`sector is ${dif}`)
+        // alert("sector is right down 5");
+      } else {
+        const dif = getRadius(midX,midY,posX,posY,6);
+        alert(`sector is ${dif}`)
+        // alert("sector is right down 6");
+      }
+    }
+  };
+
+  useEffect(() => {
+    getSectorName(positionX, positionY);
+  }, [positionX, positionY]);
 
   useEffect(() => {
     const liteYearTime = localStorage.getItem("remaining-liteyear");
@@ -144,38 +238,41 @@ const GameWheel = () => {
     const timeToEndLiteYearDef =
       parseInt(localStorage.getItem("lite-year-end-time")) -
       new Date().getTime();
-    const timeDefMin = Math.floor((timeToEndLiteYearDef % (1000 * 60 * 60)) / (1000 * 60));
+    const timeDefMin = Math.floor(
+      (timeToEndLiteYearDef % (1000 * 60 * 60)) / (1000 * 60)
+    );
     const timeDefSec = Math.floor((timeToEndLiteYearDef % (1000 * 60)) / 1000);
-    const totalTime = (timeDefMin * 60) + timeDefSec;
-    console.log('setLiteYearDuration ',totalTime);
+    const totalTime = timeDefMin * 60 + timeDefSec;
+    console.log("setLiteYearDuration ", totalTime);
     setLiteYearDuration(totalTime);
     console.log(timeToEndLiteYearDef);
     const timeToMoveDef =
-      parseInt(localStorage.getItem("position-time")) -
-      new Date().getTime();
-    const timeMoveDefMin = Math.floor((timeToMoveDef % (1000 * 60 * 60)) / (1000 * 60));
+      parseInt(localStorage.getItem("position-time")) - new Date().getTime();
+    const timeMoveDefMin = Math.floor(
+      (timeToMoveDef % (1000 * 60 * 60)) / (1000 * 60)
+    );
     const timeMoveDefSec = Math.floor((timeToMoveDef % (1000 * 60)) / 1000);
-    const totalMoveTime = (timeMoveDefMin * 60) + timeMoveDefSec;
+    const totalMoveTime = timeMoveDefMin * 60 + timeMoveDefSec;
     console.log(totalMoveTime);
     setTimeToMove(totalMoveTime);
     // setTimeToMove(10);
-    console.log('setTimeToMove  ',timeToMoveDef);
+    console.log("setTimeToMove  ", timeToMoveDef);
   }, []);
 
   useEffect(() => {
-    if(liteYearDuration<1){
-        console.log('over');
-        setLiteYear(liteYear--);
-        const nDate = new Date();
-        console.log('init Date',nDate);
-        let newDate = nDate.setSeconds(nDate.getSeconds()+10);
-        localStorage.setItem('lite-year-poster-time',newDate);
-        localStorage.setItem('remaining-liteyear',liteYear);
-        router.push('/liteyearpreview');
+    if (liteYearDuration < 1) {
+      console.log("over");
+      setLiteYear(liteYear--);
+      const nDate = new Date();
+      console.log("init Date", nDate);
+      let newDate = nDate.setSeconds(nDate.getSeconds() + 10);
+      localStorage.setItem("lite-year-poster-time", newDate);
+      localStorage.setItem("remaining-liteyear", liteYear);
+      router.push("/liteyearpreview");
     }
     const myInterval = setInterval(() => {
       setLiteYearDuration(liteYearDuration--);
-      setTimeToMove(timeToMove--)
+      setTimeToMove(timeToMove--);
     }, 1000);
     return () => {
       clearInterval(myInterval);
@@ -183,7 +280,7 @@ const GameWheel = () => {
   }, [liteYearDuration]);
 
   const planet = (e) => {
-    if(timeToMove<0){
+    if (timeToMove < 0) {
       alert("moving time over");
       return;
     }
@@ -196,10 +293,37 @@ const GameWheel = () => {
   return (
     <div className="gamewheel-main-container">
       <div className="hexagone-container">
+      {/* <CircleSvg
+          liteYear={liteYear}
+          timeToMove={timeToMove}
+          liteYearDuration={liteYearDuration}
+          finalPosition={finalPosition}
+          setFinalPosition={setFinalPosition}
+          initialPosition={initialPosition}
+          setInitialPosition={setInitialPosition}
+          setPositionX={setPositionX}
+          setPositionY={setPositionY}
+          raiderNumbers={raiderNumbers}
+          area1={area1}
+          area2={area2}
+          area3={area3}
+          area4={area4}
+          Planet={Planet}
+        ></CircleSvg> */}
+        <svg className="circleSvg-container" version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 780" width="780" height="780">
+          <circle className="a" cx="390" cy="390" r="380"/>
+          <circle className="a" cx="390" cy="390" r="340"/>
+          <circle className="a" cx="390" cy="390" r="290"/>
+          <circle className="a" cx="390" cy="390" r="240"/>
+          <circle className="a" cx="390" cy="390" r="190"/>
+          <circle className="a" cx="390" cy="390" r="140"/>
+          <circle className="a" cx="390" cy="390" r="90"/>
+          <circle className="a" cx="390" cy="390" r="50"/>
+          </svg>
         <HexGridDemo
-        liteYear={liteYear}
-        timeToMove={timeToMove}
-        liteYearDuration={liteYearDuration}
+          liteYear={liteYear}
+          timeToMove={timeToMove}
+          liteYearDuration={liteYearDuration}
           finalPosition={finalPosition}
           setFinalPosition={setFinalPosition}
           initialPosition={initialPosition}
@@ -218,8 +342,7 @@ const GameWheel = () => {
         <div className="circle-section second-section"></div>
         <div className="circle-section third-section"></div>
         <div className="circle-section fourth-section"></div> */}
-        
-        {/* <CircleSvg setPositionX={setPositionX} setPositionY={setPositionY}></CircleSvg> */}
+
         <div className="vertical-section one-section"></div>
         <div className="vertical-section two-section"></div>
         <div className="vertical-section three-section"></div>
@@ -397,10 +520,16 @@ const GameWheel = () => {
         </div>
       </div>
       <div>
-      <h1>liteyear {liteYear}</h1>
-      <h2>Liteyear Time { liteYearDuration }</h2>
-      <h3>Moving Time {timeToMove}</h3>
-      <button onClick={()=>{router.push('/play')}}>home</button>
+        <h1>liteyear {liteYear}</h1>
+        <h2>Liteyear Time {liteYearDuration}</h2>
+        <h3>Moving Time {timeToMove}</h3>
+        <button
+          onClick={() => {
+            router.push("/play");
+          }}
+        >
+          home
+        </button>
       </div>
     </div>
   );

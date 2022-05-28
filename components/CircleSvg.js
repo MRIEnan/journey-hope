@@ -1,6 +1,7 @@
 import React from "react";
+import HexGridDemo from './hexagongrid';
 
-const CircleSvg = ({ setPositionX, setPositionY}) => {
+const CircleSvg = ({ liteYear,timeToMove,liteYearDuration,finalPosition,setFinalPosition,initialPosition,setInitialPosition,setPositionX,setPositionY,raiderNumbers,area1,area2,area3,area4,Planet})=> {
   
   const stop = (e) => {
     console.log(e);
@@ -10,7 +11,7 @@ const CircleSvg = ({ setPositionX, setPositionY}) => {
     //e.stopPropagation();
   };
   return (
-    
+    <>
       <svg
         id="Layer_1"
         data-name="Layer 1"
@@ -256,6 +257,24 @@ const CircleSvg = ({ setPositionX, setPositionY}) => {
           name="sector40" onClick={(event) => stop(event)} transform="translate(-56.78 -25.2)"
         />
       </svg>
+      {/* <HexGridDemo
+          liteYear={liteYear}
+          timeToMove={timeToMove}
+          liteYearDuration={liteYearDuration}
+          finalPosition={finalPosition}
+          setFinalPosition={setFinalPosition}
+          initialPosition={initialPosition}
+          setInitialPosition={setInitialPosition}
+          setPositionX={setPositionX}
+          setPositionY={setPositionY}
+          raiderNumbers={raiderNumbers}
+          area1={area1}
+          area2={area2}
+          area3={area3}
+          area4={area4}
+          Planet={Planet}
+        /> */}
+      </>
     
   );
 };

@@ -100,7 +100,7 @@ const HexGridDemo = ({
     }
 
     if (hexagon == finalPosition) {
-      console.log("raiderNumbers",raiderNumbers)
+      // console.log("raiderNumbers",raiderNumbers)
       return {
         style: {
           fill: "rgb(0, 255, 21)",
