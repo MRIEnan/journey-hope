@@ -17,7 +17,8 @@ const HexGridDemo = ({
   area2,
   area3,
   area4,
-  Planet
+  Planet,
+  fuel
 }) => {
   const getHexProps = (hexagon) => {
     if(area1.includes(hexagon)){
@@ -95,6 +96,20 @@ const HexGridDemo = ({
           else{
             alert("time over");
           }
+        },
+      }
+    }
+
+    if(fuel.includes(hexagon)){
+      return {
+        style: {
+          fill: "rgb(0, 0, 0)",
+          // fill: "rgba(255,255,255,0.2)",
+          stroke: "rgba(255,255,255,0.35)",
+          zIndex: "6",
+        },
+        onClick: (e) => {
+          alert("Fuel Station arrived");
         },
       }
     }
@@ -212,8 +227,8 @@ const HexGridDemo = ({
         y="50%"
         fontSize={200}
         fontWeight="lighter"
-        // style={{ fill: "black" }}
-        style={{ fill: "none" }}
+        style={{ fill: "black" }}
+        // style={{ fill: "none" }}
         textAnchor="middle"
       >
         {hexagon}

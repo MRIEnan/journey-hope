@@ -232,120 +232,124 @@ a {
 
 .destination{
   position: absolute;
-  left: 50%-30px;
-  top: 0px;
+  left: 47%;
+  top: 7px;
   border: 1px solid red;
   z-index: 7;
 }
 
 .p1{
   position: absolute;
-  left: 8.5%;
-  top: 56.5%;
+  left: 8.7%;
+  top: 54.7%;
   border: 1px solid red;
   z-index: 7;
 }
 
+.raiders{
+  position: absolute;
+}
+
 .p2{
   position: absolute;
-  left: 20.5%;
-  top: 14%;
+  left: 19%;
+  top: 12.7%;
   border: 1px solid red;
   z-index: 7;
 }
 
 .p3{
   position: absolute;
-  left: 40%;
-  top: 12%;
+  left: 39.7%;
+  top: 9%;
   border: 1px solid red;
   z-index: 7;
 }
 
 .p4{
   position: absolute;
-  left: 47.5%;
-  top: 38.5%;
+  left: 46.7%;
+  top: 37%;
   border: 1px solid red;
   z-index: 7;
 }
 
 .p5{
   position: absolute;
-  left: 32%;
-  top: 66%;
+  left: 32.7%;
+  top: 60.7%;
   border: 1px solid red;
   z-index: 7;
 }
 
 .p6{
   position: absolute;
-  left: 59.5%;
-  top: 77%;
+  left: 60.5%;
+  top: 85%;
   border: 1px solid red;
   z-index: 7;
 }
 
 .p7{
   position: absolute;
-  left: 51.5%;
-  top: 50%;
+  left: 53.5%;
+  top: 49%;
   border: 1px solid red;
   z-index: 7;
 }
 
 .p8{
   position: absolute;
-  left: 12.5%;
-  top: 22.5%;
+  left: 12%;
+  top: 25%;
   border: 1px solid red;
   z-index: 7;
 }
 
 .p9{
   position: absolute;
-  left: 86.8%;
-  top: 30%;
+  left: 84.8%;
+  top: 27%;
   border: 1px solid red;
   z-index: 7;
 }
 
 .p10{
   position: absolute;
-  left: 36%;
-  top: 36.5%;
+  left: 36.3%;
+  top: 35%;
   border: 1px solid red;
   z-index: 7;
 }
 
 .p11{
   position: absolute;
-  left: 75%;
-  top: 63%;
+  left: 74%;
+  top: 61%;
   border: 1px solid red;
   z-index: 7;
 }
 
 .p12{
   position: absolute;
-  left: 63.5%;
-  top: 12%;
+  left: 64%;
+  top: 11%;
   border: 1px solid red;
   z-index: 7;
 }
 
 .p13{
   position: absolute;
-  left: 20.5%;
-  top: 77%;
+  left: 19%;
+  top: 76.5%;
   border: 1px solid red;
   z-index: 7;
 }
 
 .p14{
   position: absolute;
-  left: 83%;
-  top: 50%;
+  left: 81%;
+  top: 49%;
   border: 1px solid red;
   z-index: 7;
 }

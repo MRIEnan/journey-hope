@@ -22,9 +22,11 @@ import p6Image from "../assets/images/journy-home/p6.png";
 import p7Image from "../assets/images/journy-home/p7.png";
 import p8Image from "../assets/images/journy-home/p8.png";
 import p9Image from "../assets/images/journy-home/p9.png";
+import rImage from "../assets/images/journy-home/ten.png";
 import HexGridDemo from "./Grid";
 import CircleSvg from "./CircleSvg";
 import { useRef } from "react";
+import { forEach } from "lodash";
 
 const GameWheel = () => {
 
@@ -38,6 +40,8 @@ const GameWheel = () => {
   const [initialPosition, setInitialPosition] = useState(1027);
 
   // reaider info
+  const [raiderPosition, setRaiderPosition] = useState([]);
+  const [raiderIndex, setRaiderIndex] = useState([]);
   const [raiderNumbers, setRaiderNumbers] = useState([]);
   const [change, setChange] = useState(true);
   const [raiderTotal, setRaiderTotal] = useState(0);
@@ -67,8 +71,14 @@ const GameWheel = () => {
     705,745,646,686,726,766,666,706,746,786,826,647,687,727,767,627,667,707,747,787,807,648,688,728,768,808,668,708,748,788,828,649,689,729,769,809,669,709,749,789,690,730,770,710,750
   ]);
   const [Planet, setPlanet] = useState([
-    155, 167, 336, 319, 158, 411, 323, 281, 415, 504, 592, 587, 514, 451, 226,
+    47,126,163,282,581,803,645,385,407,528,889,149,410,651,312,532,
   ]);
+
+  const [outside,setOutside]= useState([
+    1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,40,41,42,43,44,60,61,62,63,80,81,82,83,100,101,102,120,121,122,140,141,160,161,180,181,200,201,220,240,260,280,320,360,400,440,29,30,31,32,33,34,50,51,52,53,54,70,71,72,73,74,91,92,93,94,111,112,113,114,132,133,134,152,153,154,173,174,193,214,215,135,233,234,254,255,274,294,295,314,335,354,375,394,434,415,455,495,535,575,615,634,655,674,695,714,734,735,754,774,775,794,814,815,833,834,853,854,855,873,874,893,894,895,912,913,914,932,95,982,1010,921
+  ]);
+
+  const [fuel,setFuel] = useState([545,348]);
 
   // liteyear info
   const [liteYear, setLiteYear] = useState(null);
@@ -96,13 +106,15 @@ const GameWheel = () => {
     setRaiderTotal(randomNum);
     setChange(!change);
     let tNum = [];
-    for (let index = 100; index < 600; index++) {
+    for (let index = 0; index < 1054; index++) {
       if (
         Planet.includes(index) ||
         area1.includes(index) ||
         area2.includes(index) ||
         area3.includes(index) ||
-        area4.includes(index)
+        area4.includes(index) || 
+        outside.includes(index) ||
+        fuel.includes(index)
       ) {
         continue;
       }
@@ -126,31 +138,38 @@ const GameWheel = () => {
     }
 
     shuffle(tNum);
+    console.log("randomNum",randomNum);
+    console.log("shuffle",tNum);
     const newArr = [];
     console.log("tNum", tNum);
     for (let index = 0; index < randomNum; index++) {
       //condition pos is not be planet or those area
       newArr.push(tNum[index]);
     }
-    setRaiderNumbers([...newArr]);
-    /*
-    const abc = [...Array(randomNum).keys()];
-      console.log("ABC:",abc);
-      const newArr = []; 
-      abc.map(()=>{
-        let num = Math.round(Math.random()*1000);
-        if(num>600){
-          num=600;
-        }
-        else if(num<60){
-          num=60;
-        }
-        newArr.push(num);
-      });
-      setRaiderNumbers([...newArr]);
-      console.log("RN:",[...newArr]);
-    console.log("RANDOM total",randomNum);*/
+    setRaiderIndex([...newArr]);
   }, []);
+  
+  useEffect(() => {
+    if(raiderIndex){
+      const arr = [];
+      raiderIndex.forEach(raider=>{
+        const raiderId = document.getElementById(`${raider}text`);
+        
+        const rect = raiderId.getBoundingClientRect();
+        const raiderX = Math.round(rect.x);
+        const raiderY = Math.round(rect.y);
+        const posXY = {left:raiderX,top:raiderY};
+        arr.push(posXY);
+      });
+      console.log(arr);
+      setRaiderPosition([...arr]);
+    }
+  }, [])
+
+  useEffect(()=>{
+    console.log("ri",raiderIndex);
+  },[raiderPosition])
+  
 
   // useEffect(() => {
   //   if(raiderTotal){
@@ -422,12 +441,13 @@ const GameWheel = () => {
           setInitialPosition={setInitialPosition}
           setPositionX={setPositionX}
           setPositionY={setPositionY}
-          raiderNumbers={raiderNumbers}
+          raiderNumbers={raiderIndex}
           area1={area1}
           area2={area2}
           area3={area3}
           area4={area4}
           Planet={Planet}
+          fuel={fuel} 
         />
         <div className="vertical-section one-section"></div>
         <div className="vertical-section two-section"></div>
@@ -444,14 +464,59 @@ const GameWheel = () => {
             />
           </div>
         </div>
+
+        {
+          // raiderPosition.map(raiders=>{
+          //     <div className="spaceship-container" style={raiders}>
+          //   <div className="raider">
+          //     <Image
+          //       src={rImage}
+          //       alt="raider image"
+          //       width={20}
+          //       height={20}
+          //       zIndex={7}
+          //     />
+          //   </div>
+          // </div>
+          // })
+          [...raiderIndex].forEach(element => {
+            <div className="raiders">
+           <Image
+             name="earth"
+             src={rImage}
+             alt="dest image"
+             width={15}
+             height={15}
+             zIndex={10}
+             />
+         </div>
+          })
+
+
+        //   raiderIndex.forEach(raiders => {
+        //     <Tippy inertia={true} followCursor={true} delay={200} offset={[0,0]} placement={'bottom'} animation='perspective' theme={'planet-tooltip-theme'} interactive={true}content="Earth">
+        //   <div className="raiders" style={raiders}>
+        //   <Image
+        //     name="earth"
+        //     src={rImage}
+        //     alt="dest image"
+        //     width={15}
+        //     height={15}
+        //     zIndex={10}
+        //     />
+        // </div>
+        //   </Tippy>           
+        //   })
+         }
+        
         <Tippy inertia={true} followCursor={true} delay={200} offset={[0,0]} placement={'bottom'} animation='perspective' theme={'planet-tooltip-theme'} interactive={true}content="Earth">
           <div className="destination" onClick={(event) => planet(event)}>
           <Image
             name="earth"
             src={destImage}
             alt="dest image"
-            width={20}
-            height={20}
+            width={15}
+            height={15}
             zIndex={10}
             />
         </div>
@@ -463,8 +528,8 @@ const GameWheel = () => {
             src={p1Image}
             name="p1 image"
             alt="p1 image"
-            width={20}
-            height={20}
+            width={15}
+            height={15}
             zIndex={7}
           />
         </div>
@@ -476,8 +541,8 @@ const GameWheel = () => {
             src={p2Image}
             name="p2 image"
             alt="p2 image"
-            width={20}
-            height={20}
+            width={15}
+            height={15}
             zIndex={7}
           />
         </div>
@@ -489,8 +554,8 @@ const GameWheel = () => {
             src={p3Image}
             name={"p3 image"}
             alt="p3 image"
-            width={20}
-            height={20}
+            width={15}
+            height={15}
             zIndex={7}
           />
         </div>
@@ -502,8 +567,8 @@ const GameWheel = () => {
             src={p4Image}
             name="p4 image"
             alt="p4 image"
-            width={20}
-            height={20}
+            width={15}
+            height={15}
             zIndex={7}
           />
         </div>
@@ -515,8 +580,8 @@ const GameWheel = () => {
             src={p5Image}
             alt="p5 image"
             name="p5 image"
-            width={20}
-            height={20}
+            width={15}
+            height={15}
             zIndex={7}
           />
         </div>
@@ -528,8 +593,8 @@ const GameWheel = () => {
             src={p6Image}
             alt="p6 image"
             name="p6 image"
-            width={20}
-            height={20}
+            width={15}
+            height={15}
             zIndex={7}
           />
         </div>
@@ -541,8 +606,8 @@ const GameWheel = () => {
             src={p7Image}
             alt="p7 image"
             name="p7 image"
-            width={20}
-            height={20}
+            width={15}
+            height={15}
             zIndex={7}
           />
         </div>
@@ -554,8 +619,8 @@ const GameWheel = () => {
             src={p8Image}
             alt="p8 image"
             name="p8 image"
-            width={20}
-            height={20}
+            width={15}
+            height={15}
             zIndex={7}
           />
         </div>
@@ -567,8 +632,8 @@ const GameWheel = () => {
             src={p9Image}
             alt="p9 image"
             name="p9 image"
-            width={20}
-            height={20}
+            width={15}
+            height={15}
             zIndex={7}
           />
         </div>
@@ -580,8 +645,8 @@ const GameWheel = () => {
             src={p10Image}
             alt="p10 image"
             name="p10 image"
-            width={20}
-            height={20}
+            width={15}
+            height={15}
             zIndex={7}
           />
         </div>
@@ -593,8 +658,8 @@ const GameWheel = () => {
             src={p11Image}
             alt="p11 image"
             name="p11 image"
-            width={20}
-            height={20}
+            width={15}
+            height={15}
             zIndex={7}
           />
         </div>
@@ -606,8 +671,8 @@ const GameWheel = () => {
             src={p12Image}
             alt="p12 image"
             name="p12 image"
-            width={20}
-            height={20}
+            width={15}
+            height={15}
             zIndex={7}
           />
         </div>
@@ -619,8 +684,8 @@ const GameWheel = () => {
             src={p13Image}
             alt="p13 image"
             name="p13 image"
-            width={20}
-            height={20}
+            width={15}
+            height={15}
             zIndex={7}
           />
         </div>
@@ -632,8 +697,8 @@ const GameWheel = () => {
             src={p14Image}
             alt="p14 image"
             name="p14 image"
-            width={20}
-            height={20}
+            width={15}
+            height={15}
             zIndex={7}
           />
         </div>
@@ -645,8 +710,8 @@ const GameWheel = () => {
             src={p15Image}
             alt="p15 image"
             name="p15 image"
-            width={20}
-            height={20}
+            width={15}
+            height={15}
             zIndex={7}
           />
         </div>
