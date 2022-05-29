@@ -89,7 +89,7 @@ const HexGridDemo = ({
           zIndex: "6",
         },
         onClick: (e) => {
-          if (timeToMove > 0) {
+          if (timeToMove > 0 || timeToMove<= 0) {
             alert("raider")
           }
           else{
@@ -113,7 +113,7 @@ const HexGridDemo = ({
           stroke: "white"
         }, */
         onClick: (e) => {
-          if (timeToMove > 0) {
+          if (timeToMove > 0 || timeToMove<= 0) {
             console.log(e);
             const hexId = window.document.getElementById(`${hexagon}text`);
             console.log(`hello ${hexId.target}`);
@@ -149,7 +149,7 @@ const HexGridDemo = ({
             stroke: "white"
           }, */
         onClick: (e) => {
-          if (timeToMove > 0) {
+          if (timeToMove > 0 || timeToMove<= 0) {
             console.log(e);
             setInitialPosition(finalPosition);
             setFinalPosition(hexagon);
@@ -181,9 +181,9 @@ const HexGridDemo = ({
               stroke: "white"
             }, */
         onClick: (e) => {
-          if (timeToMove > 0) {
+          if (timeToMove > 0 || timeToMove<= 0) {
             console.log(e);
-            setPositionX(e.clientX);
+            setPositionX(e.clientX-360);
             setPositionY(e.clientY);
             setInitialPosition(finalPosition);
             setFinalPosition(hexagon);
@@ -210,9 +210,10 @@ const HexGridDemo = ({
         id={`${hexagon}text`}
         x="50%"
         y="50%"
-        fontSize={100}
+        fontSize={200}
         fontWeight="lighter"
-        style={{ fill: "black" }}
+        // style={{ fill: "black" }}
+        style={{ fill: "none" }}
         textAnchor="middle"
       >
         {hexagon}
@@ -220,7 +221,7 @@ const HexGridDemo = ({
     );
   };
 
-  let hexagons = times(729, (id) => id);
+  let hexagons = times(1369, (id) => id);
 
   return (
     <HexagonGrid

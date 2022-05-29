@@ -1,6 +1,10 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
+import Tippy, {followCursor} from "@tippyjs/react";
+import 'tippy.js/dist/tippy.css';
+import 'tippy.js/animations/perspective.css';
+import 'tippy.js/themes/light.css';
 import arrowImage from "../assets/images/journy-home/arrow.png";
 import destImage from "../assets/images/journy-home/one.png";
 import p1Image from "../assets/images/journy-home/p1.png";
@@ -20,33 +24,47 @@ import p8Image from "../assets/images/journy-home/p8.png";
 import p9Image from "../assets/images/journy-home/p9.png";
 import HexGridDemo from "./Grid";
 import CircleSvg from "./CircleSvg";
+import { useRef } from "react";
 
 const GameWheel = () => {
+
+  const myName = "enan";
   // hexagone grid info
-  const [sectorName, setSectorName] = useState("sector1");
-  const [positionX, setPositionX] = useState(335);
-  const [positionY, setPositionY] = useState(660);
+  const [sectorName, setSectorName] = useState("36");
+  const [positionX, setPositionX] = useState(305);
+  const [positionY, setPositionY] = useState(600);
   const [hexagone, setHexagone] = useState(0);
-  const [finalPosition, setFinalPosition] = useState(696);
-  const [initialPosition, setInitialPosition] = useState(696);
+  const [finalPosition, setFinalPosition] = useState(1027);
+  const [initialPosition, setInitialPosition] = useState(1027);
+
+  // reaider info
   const [raiderNumbers, setRaiderNumbers] = useState([]);
   const [change, setChange] = useState(true);
   const [raiderTotal, setRaiderTotal] = useState(0);
+
+  //message box and beacon activator info
+  const [messagesArr,setMessagesArr] = useState([{name:'enan',text:"This is first text"},{name:'naman',text:"This is second"}]);
+  const msgRef = useRef();
+  const [isBeaconIconActivated,setIsBeaconIconActivated] = useState(false);
+  const [beaconActivatePlanet,setBeaconActivationPlanet]=useState('earth')
+  const [beaconActivateCode,setBeaconActivationCode]=useState('p1 image')
+  const beaconCode = 'BB2022FB29';
+  const beaconCodeRef = useRef();
+
+  //beacon-activation-code
+
+  // forbidden area info
   const [area1, setArea1] = useState([
-    259, 275, 260, 276, 261, 277, 262, 245, 246, 247, 170, 171, 156, 200, 215,
-    230, 216, 186, 201, 237, 231, 217,
+    127,146,147,167,186,187,206,207,208,225,226,227,228,245,246,247,248,249,264,265,266,267,268,269
   ]);
   const [area2, setArea2] = useState([
-    286, 302, 287, 303, 301, 318, 316, 317, 333, 332, 331, 346, 347, 348, 362,
-    363, 271, 272, 273, 288,
+    362,363,364,381,382,383,384,402,403,404,421,422,423,442,443,444,461,462,463,441,481,482,483
   ]);
   const [area3, setArea3] = useState([
-    455, 456, 470, 471, 457, 499, 501, 502, 500, 485, 486, 487, 515, 516, 517,
-    530, 531, 545,
+    353,373,374,393,412,413,432,433,452,453,454,471,472,473,474,491,492,493,494
   ]);
   const [area4, setArea4] = useState([
-    370, 371, 384, 385, 386, 354, 355, 356, 339, 340, 341, 324, 325, 310, 311,
-    295,
+    705,745,646,686,726,766,666,706,746,786,826,647,687,727,767,627,667,707,747,787,807,648,688,728,768,808,668,708,748,788,828,649,689,729,769,809,669,709,749,789,690,730,770,710,750
   ]);
   const [Planet, setPlanet] = useState([
     155, 167, 336, 319, 158, 411, 323, 281, 415, 504, 592, 587, 514, 451, 226,
@@ -154,25 +172,27 @@ const GameWheel = () => {
   //     console.log("RN:",raiderNumbers);
   //   }
   // }, [raiderTotal,change]);
+  // 260,220,180,140,100,60,  
   const getRadius = (midX,midY,posX,posY,quarter=1) =>{
     const dif = Math.sqrt(Math.pow(Math.abs(midX-posX),2)+Math.pow(Math.abs(midY-posY),2))
     let ans;
-    if(dif<50){
+    // 310,270,230,190,150,110,70,30
+    if(dif<60){
       ans = 7 + (quarter-1)*7;
     }
-    else if(dif<90){
+    else if(dif<100){
       ans = 6 + (quarter-1)*7
     }
     else if(dif<140){
       ans = 5 + (quarter-1)*7
     }
-    else if(dif<190){
+    else if(dif<180){
       ans = 4 + (quarter-1)*7
     }
-    else if(dif<240){
+    else if(dif<220){
       ans = 3 + (quarter-1)*7
     }
-    else if(dif<290){
+    else if(dif<260){
       ans = 2 + (quarter-1)*7
     }
     else{
@@ -182,47 +202,55 @@ const GameWheel = () => {
   }
 
   const getSectorName = (x = 650, y = 650) => {
-    const midX = 330;
-    const midY = 330;
+    const midX = 300;
+    const midY = 300;
     let posX = x;
     let posY = y;
     if (x < midX && y < midY) {
       if (x <= y) {
         const dif = getRadius(midX,midY,posX,posY,1);
-        alert(`sector is ${dif}`)
+        // alert(`sector is ${dif}`)
+        setSectorName(dif);
       } 
       else {
         const dif = getRadius(midX,midY,posX,posY,2);
-        alert(`sector is ${dif}`)
+        setSectorName(dif);
+        // alert(`sector is ${dif}`)
       }
     } else if (x < midX && y > midY) {
       if (x + y >= midX + midY) {
         const dif = getRadius(midX,midY,posX,posY,7);
-        alert(`sector is ${dif}`)
+        setSectorName(dif);
+        // alert(`sector is ${dif}`)
         // alert("sector is left down 7");
       } else {
         const dif = getRadius(midX,midY,posX,posY,8);
-        alert(`sector is ${dif}`)
+        setSectorName(dif);
+        // alert(`sector is ${dif}`)
         // alert("sector is left down 8");
       }
     } else if (x > midX && y < midY) {
       if (x + y <= midX + midY) {
         const dif = getRadius(midX,midY,posX,posY,3);
-        alert(`sector is ${dif}`)
+        setSectorName(dif);
+        // alert(`sector is ${dif}`)
         // alert("sector is right up 3");
       } else {
         const dif = getRadius(midX,midY,posX,posY,4);
-        alert(`sector is ${dif}`)
+        setSectorName(dif);
+        // alert(`sector is ${dif}`)
         // alert("sector is right up 4");
       }
     } else if (x > midX && y > midY) {
       if (x > y) {
         const dif = getRadius(midX,midY,posX,posY,5);
-        alert(`sector is ${dif}`)
+        setSectorName(dif);
+        // alert(`sector is ${dif}`)
         // alert("sector is right down 5");
       } else {
         const dif = getRadius(midX,midY,posX,posY,6);
-        alert(`sector is ${dif}`)
+        setSectorName(dif);
+        // alert(`sector is ${dif}`)
         // alert("sector is right down 6");
       }
     }
@@ -231,6 +259,20 @@ const GameWheel = () => {
   useEffect(() => {
     getSectorName(positionX, positionY);
   }, [positionX, positionY]);
+
+  const getNotified = (msgArr) =>{
+    const newArr = [msgArr,...messagesArr];
+    setMessagesArr([...newArr]);
+
+  }
+
+  useEffect(()=>{
+    const sectorState = `startship is in sector${sectorName}`;
+    const name=myName;
+    const msgArr = {name:name,text:sectorState}
+    getNotified(msgArr);
+  },[sectorName])
+
 
   useEffect(() => {
     const liteYearTime = localStorage.getItem("remaining-liteyear");
@@ -257,69 +299,119 @@ const GameWheel = () => {
     setTimeToMove(totalMoveTime);
     // setTimeToMove(10);
     console.log("setTimeToMove  ", timeToMoveDef);
-  }, []);
+  }, [liteYear]);
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (liteYearDuration < 1) {
       console.log("over");
       setLiteYear(liteYear--);
       const nDate = new Date();
       console.log("init Date", nDate);
-      let newDate = nDate.setSeconds(nDate.getSeconds() + 10);
-      localStorage.setItem("lite-year-poster-time", newDate);
+      // let newDate = nDate.setSeconds(nDate.getSeconds() + 10);
+      // localStorage.setItem("lite-year-poster-time", newDate);
       localStorage.setItem("remaining-liteyear", liteYear);
-      router.push("/liteyearpreview");
+      let positionTime = nDate.setSeconds(nDate.getSeconds()+10);
+      let liteYearEndTime = nDate.setSeconds(nDate.getSeconds()+20);
+      localStorage.setItem('position-time',positionTime);
+      localStorage.setItem('lite-year-end-time',liteYearEndTime);
+      localStorage.setItem('remaining-liteyear',liteYear);
+      // router.push("/liteyearpreview");
     }
     const myInterval = setInterval(() => {
       setLiteYearDuration(liteYearDuration--);
       setTimeToMove(timeToMove--);
-    }, 1000);
+    },1000);
     return () => {
       clearInterval(myInterval);
     };
-  }, [liteYearDuration]);
+  }, [liteYearDuration]); */
 
   const planet = (e) => {
-    if (timeToMove < 0) {
-      alert("moving time over");
-      return;
+    // if (timeToMove < 0) {
+    //   alert("moving time over");
+    //   return;
+    // }
+    // alert(`Planet Arrived ${e.target.name}!`);
+    // alert(`Planet Arrived ${e.target.name}!`);
+    if(e.target.name==beaconActivatePlanet){
+      setIsBeaconIconActivated(true);
+      const arr={name:myName,text:`Planet Arrived ${e.target.name}!`}
+      const arr1 = {name:myName,text:`Beacon is ready to activate`};
+      getNotified(arr);
+      getNotified(arr1);
+      setPositionX(e.clientX);
+      setPositionY(e.clientY);
+      setInitialPosition(finalPosition);
+      // setFinalPosition(hexagon);
     }
-    alert(`Planet Arrived ${e.target.name}!`);
-    setPositionX(e.clientX);
-    setPositionY(e.clientY);
-    setInitialPosition(finalPosition);
-    // setFinalPosition(hexagon);
+    else if(e.target.name == beaconActivateCode){
+      const arr={name:myName,text:`Planet Arrived ${e.target.name}!`}
+      const arr1={name:myName,text:`Activation code is ${beaconCode}`}
+      getNotified(arr);
+      getNotified(arr1);
+      setPositionX(e.clientX);
+      setPositionY(e.clientY);
+      setInitialPosition(finalPosition);
+      // setFinalPosition(hexagon);
+    }
+    else{
+      const arr={name:myName,text:`Planet Arrived ${e.target.name}!`}
+      getNotified(arr);
+      setPositionX(e.clientX);
+      setPositionY(e.clientY);
+      setInitialPosition(finalPosition);
+      // setFinalPosition(hexagon);
+    }
   };
+
+  const beaconActivateBtn = (e) =>{
+    e.preventDefault();
+    if(beaconCodeRef.current.value == beaconCode){
+      // alert('Bio Beacond is Activated Successfully');
+      getNotified({name:myName,text:`Bio Beacon is Activated Successfully`})
+    }
+    else{
+      // alert('please input the valid code');
+      getNotified({name:myName,text:`Bio Beacon Activation code is not authorized`})
+    }
+  }
+
+  const sendMessages = (e) =>{
+    e.preventDefault();
+  }
   return (
     <div className="gamewheel-main-container">
+      <div className="beacon-info-container">
+        <div className="messages-main-container">
+          <ul className="messages-showcase">
+          {
+            messagesArr.map((msg,index)=>
+              <li className={msg.name=='enan'?"self-messages-list":"opponent-messages-list"} key={index}><p>{msg.text}</p></li>
+            )
+          }
+          </ul>
+          <form onSubmit={(e)=>{sendMessages(e)}} className="messages-writing-box">
+            <input type="text" placeholder="write messages"/>
+            <button type="submit">Send</button>
+          </form>
+        </div>
+        <div className="beacon-activation-container">
+          {isBeaconIconActivated && <div className='beacon-icon-container'><div id="beacon-icon"></div></div>}
+          {isBeaconIconActivated &&  <form onSubmit={e=>beaconActivateBtn(e)}>
+            <input ref={beaconCodeRef} type="password" placeholder="Enter Beacon Code"/>
+            <button type="submit">Activate</button>
+          </form>}
+        </div>
+      </div>
       <div className="hexagone-container">
-      {/* <CircleSvg
-          liteYear={liteYear}
-          timeToMove={timeToMove}
-          liteYearDuration={liteYearDuration}
-          finalPosition={finalPosition}
-          setFinalPosition={setFinalPosition}
-          initialPosition={initialPosition}
-          setInitialPosition={setInitialPosition}
-          setPositionX={setPositionX}
-          setPositionY={setPositionY}
-          raiderNumbers={raiderNumbers}
-          area1={area1}
-          area2={area2}
-          area3={area3}
-          area4={area4}
-          Planet={Planet}
-        ></CircleSvg> */}
         <svg className="circleSvg-container" version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 780" width="780" height="780">
-          <circle className="a" cx="390" cy="390" r="380"/>
-          <circle className="a" cx="390" cy="390" r="340"/>
-          <circle className="a" cx="390" cy="390" r="290"/>
-          <circle className="a" cx="390" cy="390" r="240"/>
-          <circle className="a" cx="390" cy="390" r="190"/>
+          <circle className="a" cx="390" cy="390" r="260"/>
+          <circle className="a" cx="390" cy="390" r="220"/>
+          <circle className="a" cx="390" cy="390" r="180"/>
           <circle className="a" cx="390" cy="390" r="140"/>
-          <circle className="a" cx="390" cy="390" r="90"/>
-          <circle className="a" cx="390" cy="390" r="50"/>
-          </svg>
+          <circle className="a" cx="390" cy="390" r="100"/>
+          <circle className="a" cx="390" cy="390" r="60"/>
+        </svg>
         <HexGridDemo
           liteYear={liteYear}
           timeToMove={timeToMove}
@@ -337,12 +429,6 @@ const GameWheel = () => {
           area4={area4}
           Planet={Planet}
         />
-        {/* <div className="circle-section"></div>
-        <div className="circle-section first-section"></div>
-        <div className="circle-section second-section"></div>
-        <div className="circle-section third-section"></div>
-        <div className="circle-section fourth-section"></div> */}
-
         <div className="vertical-section one-section"></div>
         <div className="vertical-section two-section"></div>
         <div className="vertical-section three-section"></div>
@@ -358,7 +444,8 @@ const GameWheel = () => {
             />
           </div>
         </div>
-        <div className="destination" onClick={(event) => planet(event)}>
+        <Tippy inertia={true} followCursor={true} delay={200} offset={[0,0]} placement={'bottom'} animation='perspective' theme={'planet-tooltip-theme'} interactive={true}content="Earth">
+          <div className="destination" onClick={(event) => planet(event)}>
           <Image
             name="earth"
             src={destImage}
@@ -366,18 +453,24 @@ const GameWheel = () => {
             width={20}
             height={20}
             zIndex={10}
-          />
+            />
         </div>
+          </Tippy>
+          <Tippy inertia={true} followCursor={true} delay={200} offset={[0,0]} placement={'bottom'} animation='perspective' theme={'planet-tooltip-theme'} interactive={true}content="p1">
+
         <div className="p1" onClick={(event) => planet(event)}>
           <Image
             src={p1Image}
-            name="p1"
+            name="p1 image"
             alt="p1 image"
             width={20}
             height={20}
             zIndex={7}
           />
         </div>
+            </Tippy>
+            <Tippy inertia={true} followCursor={true} delay={200} offset={[0,0]} placement={'bottom'} animation='perspective' theme={'planet-tooltip-theme'} interactive={true}content="p2">
+
         <div className="p2" onClick={(event) => planet(event)}>
           <Image
             src={p2Image}
@@ -388,6 +481,9 @@ const GameWheel = () => {
             zIndex={7}
           />
         </div>
+            </Tippy>    
+            <Tippy inertia={true} followCursor={true} delay={200} offset={[0,0]} placement={'bottom'} animation='perspective' theme={'planet-tooltip-theme'} interactive={true}content="p3">
+
         <div className="p3" onClick={(event) => planet(event)}>
           <Image
             src={p3Image}
@@ -398,6 +494,9 @@ const GameWheel = () => {
             zIndex={7}
           />
         </div>
+        </Tippy>
+        <Tippy inertia={true} followCursor={true} delay={200} offset={[0,0]} placement={'bottom'} animation='perspective' theme={'planet-tooltip-theme'} interactive={true}content="p4">
+
         <div className="p4" onClick={(event) => planet(event)}>
           <Image
             src={p4Image}
@@ -408,6 +507,9 @@ const GameWheel = () => {
             zIndex={7}
           />
         </div>
+    </Tippy>
+        <Tippy inertia={true} followCursor={true} delay={200} offset={[0,0]} placement={'bottom'} animation='perspective' theme={'planet-tooltip-theme'} interactive={true}content="p5">
+
         <div className="p5" onClick={(event) => planet(event)}>
           <Image
             src={p5Image}
@@ -418,6 +520,9 @@ const GameWheel = () => {
             zIndex={7}
           />
         </div>
+    </Tippy>
+        <Tippy inertia={true} followCursor={true} delay={200} offset={[0,0]} placement={'bottom'} animation='perspective' theme={'planet-tooltip-theme'} interactive={true}content="p6">
+
         <div className="p6" onClick={(event) => planet(event)}>
           <Image
             src={p6Image}
@@ -428,6 +533,9 @@ const GameWheel = () => {
             zIndex={7}
           />
         </div>
+    </Tippy>
+        <Tippy inertia={true} followCursor={true} delay={200} offset={[0,0]} placement={'bottom'} animation='perspective' theme={'planet-tooltip-theme'} interactive={true}content="p7">
+
         <div className="p7" onClick={(event) => planet(event)}>
           <Image
             src={p7Image}
@@ -438,6 +546,9 @@ const GameWheel = () => {
             zIndex={7}
           />
         </div>
+    </Tippy>
+        <Tippy inertia={true} followCursor={true} delay={200} offset={[0,0]} placement={'bottom'} animation='perspective' theme={'planet-tooltip-theme'} interactive={true}content="p8">
+
         <div className="p8" onClick={(event) => planet(event)}>
           <Image
             src={p8Image}
@@ -448,6 +559,9 @@ const GameWheel = () => {
             zIndex={7}
           />
         </div>
+    </Tippy>
+        <Tippy inertia={true} followCursor={true} delay={200} offset={[0,0]} placement={'bottom'} animation='perspective' theme={'planet-tooltip-theme'} interactive={true}content="p9">
+
         <div className="p9" onClick={(event) => planet(event)}>
           <Image
             src={p9Image}
@@ -458,6 +572,9 @@ const GameWheel = () => {
             zIndex={7}
           />
         </div>
+    </Tippy>
+        <Tippy inertia={true} followCursor={true} delay={200} offset={[0,0]} placement={'bottom'} animation='perspective' theme={'planet-tooltip-theme'} interactive={true}content="p10">
+
         <div className="p10" onClick={(event) => planet(event)}>
           <Image
             src={p10Image}
@@ -468,6 +585,9 @@ const GameWheel = () => {
             zIndex={7}
           />
         </div>
+    </Tippy>
+        <Tippy inertia={true} followCursor={true} delay={200} offset={[0,0]} placement={'bottom'} animation='perspective' theme={'planet-tooltip-theme'} interactive={true}content="p11">
+
         <div className="p11" onClick={(event) => planet(event)}>
           <Image
             src={p11Image}
@@ -478,6 +598,9 @@ const GameWheel = () => {
             zIndex={7}
           />
         </div>
+    </Tippy>
+        <Tippy inertia={true} followCursor={true} delay={200} offset={[0,0]} placement={'bottom'} animation='perspective' theme={'planet-tooltip-theme'} interactive={true}content="p12">
+
         <div className="p12" onClick={(event) => planet(event)}>
           <Image
             src={p12Image}
@@ -488,6 +611,9 @@ const GameWheel = () => {
             zIndex={7}
           />
         </div>
+    </Tippy>
+        <Tippy inertia={true} followCursor={true} delay={200} offset={[0,0]} placement={'bottom'} animation='perspective' theme={'planet-tooltip-theme'} interactive={true}content="p13">
+
         <div className="p13" onClick={(event) => planet(event)}>
           <Image
             src={p13Image}
@@ -498,6 +624,9 @@ const GameWheel = () => {
             zIndex={7}
           />
         </div>
+    </Tippy>
+        <Tippy inertia={true} followCursor={true} delay={200} offset={[0,0]} placement={'bottom'} animation='perspective' theme={'planet-tooltip-theme'} interactive={true}content="p14">
+
         <div className="p14" onClick={(event) => planet(event)}>
           <Image
             src={p14Image}
@@ -508,6 +637,9 @@ const GameWheel = () => {
             zIndex={7}
           />
         </div>
+    </Tippy>
+        <Tippy inertia={true} followCursor={true} delay={200} offset={[0,0]} placement={'bottom'} animation='perspective' theme={'planet-tooltip-theme'} interactive={true}content="p15">
+
         <div className="p15" onClick={(event) => planet(event)}>
           <Image
             src={p15Image}
@@ -518,6 +650,7 @@ const GameWheel = () => {
             zIndex={7}
           />
         </div>
+    </Tippy>
       </div>
       <div>
         <h1>liteyear {liteYear}</h1>

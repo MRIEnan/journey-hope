@@ -20,12 +20,15 @@ a {
 /* hexagone main container */
 
 .gamewheel-main-container{
-  display: flex;
+  display: grid;
+  padding: 5px;
+  grid-template-columns: 360px 600px 1fr;
+  /* background-color: rgb(37, 8, 105); */
 }
 
 .hexagone-container{
-  height: 660px;
-  width: 660px;
+  height: 600px;
+  width: 600px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,40 +39,32 @@ a {
   border: 3px solid rgba(255, 255, 255, .55);
 }
 
+/* beacon information container  */
+.beacon-info-container{
+  background-color: antiquewhite;
+  width: 360px;
+  display: inline-block;
+}
 
-/* hexagone container circle section  */
-.circle-section{
+.circleSvg-container{
   position: absolute;
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  background-color: transparent;
-  border-radius: 50%;
   z-index: 3;
+  border-radius: 50%;
+  /* background-color: rgb(0, 204, 255); */
 }
 
-.first-section{
-  width: 80%;
-  height: 80%;
-  background-color: transparent;
-  z-index: 3;
+.a{
+  stroke: rgba(255, 255, 255, 0.438);
+  fill: none;
+  stroke-width: 3;
 }
-.second-section{
-  width: 60%;
-  height: 60%;
-  background-color: transparent;
-  z-index: 3;
+.cls-1{
+  fill:  none;
+  /* fill:  yellow; */
+  stroke: rgba(160, 160, 160, 0.2);
+  z-index: -1;
 }
-.third-section{
-  width: 40%;
-  height: 40%;
-  background-color: transparent;
-  z-index: 3;
-}
-.fourth-section{
-  width: 20%;
-  height: 20%;
-  background-color: transparent;
-  z-index: 3;
-}
+
 
 /* hexagone container vertical section  */
 .vertical-section{
@@ -101,7 +96,7 @@ a {
   position: absolute;
   /* background-color: blue; */
   z-index: 11;
-  left: 0px;
+  left: -7px;
   top: 0px;
   /* left: calc( 50% - 20px); */
 }
@@ -119,6 +114,121 @@ a {
   bottom: 0;
   left: 500px;
 } */
+
+.tippy-box[data-theme~='planet-tooltip-theme'] {
+  background-color: rgb(71, 99, 255);
+  color: rgb(255, 255, 255);
+}
+
+.messages-main-container{
+  background-color: cadetblue;
+  height: 70%;
+}
+
+.messages-showcase{
+  background-color: rgb(238, 247, 247);
+  height: 320px;
+  max-height: 320px;
+  width: calc( 100% - 20px);
+  margin: 10px;
+  padding-top: 10px;
+  overflow-y: scroll;
+}
+
+
+
+.messages-showcase li{
+  list-style: none;
+}
+
+.self-messages-list{
+  color: black;
+}
+.opponent-messages-list{
+  color: red;
+}
+
+.messages-writing-box{
+  width: calc( 100% - 20px);
+  margin: 10px;
+  height: 80px;
+}
+
+.messages-writing-box input{
+  width: 100%;
+  height: 40px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+  overflow: hidden;
+}
+
+.messages-writing-box button{
+  margin: 0;
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  font-weight: 500;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(62, 60, 209);
+}
+
+
+.beacon-icon-container{
+  background-color: yellow;
+  height: 50px;
+  display: grid;
+  place-items: center;
+}
+
+#beacon-icon{
+  height: 20px;
+  width: 100px;
+  display: inline-block;
+  background-color: rgb(15, 107, 15);
+  border: 3px solid rgb(27, 247, 27);
+  border-radius: 5px;
+  background-color: rgb(15, 107, 15);
+  animation: animateBeaconIcon 20s ease infinite;
+  transform: rotateZ(-10deg);
+}
+
+@keyframes animateBeaconIcon {
+  0%{
+    transform: rotateZ(-10deg);
+    background-color: rgb(15, 107, 15);
+    border: 3px solid rgb(27, 247, 27);
+  }  
+  20%{
+    transform: rotateZ(0deg);
+    border: 3px solid rgb(21, 139, 21);
+    background-color: rgb(21, 139, 21);
+  }  
+  40%{
+    transform: rotateZ(10deg);
+    background-color: rgb(32, 199, 32);
+    border: 3px solid rgb(27, 247, 27);
+  }  
+  60%{
+    transform: rotateZ(10deg);
+    ackground-color: rgb(32, 199, 32);
+    border: 3px solid rgb(27, 247, 27);
+  }  
+  80%{
+    transform: rotateZ(0deg);
+    background-color: rgb(21, 139, 21);
+    border: 3px solid rgb(21, 139, 21);
+  }  
+  100%{
+    transform: rotateZ(-10deg);
+    background-color: rgb(15, 107, 15);
+    border: 3px solid rgb(27, 247, 27);
+  }  
+}
+
+
+/* planets theme customization info  */
 
 .destination{
   position: absolute;
@@ -246,26 +356,4 @@ a {
   top: 37%;
   border: 1px solid red;
   z-index: 7;
-}
-
-.circleSvg-container{
-  position: absolute;
-  z-index: 3;
-  /* height: 0; */
-  /* width: 0; */
-  /* z-index: 10; */
-  /* z-index: -1; */
-}
-/* <style>.a{stroke:#fff;stroke-width:3}.b{fill:#fff}</style> */
-
-.a{
-  stroke: rgba(255, 255, 255, 0.438);
-  fill: none;
-  stroke-width: 3;
-}
-.cls-1{
-  fill:  none;
-  /* fill:  yellow; */
-  stroke: rgba(160, 160, 160, 0.2);
-  z-index: -1;
 }

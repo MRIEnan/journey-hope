@@ -80,15 +80,12 @@ const HexagonGrid = (props) => {
   };
 
   return (
-    <>
-    <svg style={{zIndex:'5'}} width={gridWidth} height={gridHeight} x={x} y={y}>
+    <svg style={{zIndex:'5',transform:'scale(1.05)',borderRadius:'50%'}} width={600} height={600} x={x} y={y}>
       {times(state.rows, (row) => {
         const remaining = hexagons.length - row * state.columns;
         const columns = remaining < state.columns ? remaining : state.columns;
         const rowDim = getRowDimensions(row);
         return (
-          <>
-          {/* <CircleSvg setPositionX={setPositionX} setPositionY={setPositionY}/> */}
           <svg
             key={row}
             width={rowDim.width}
@@ -108,18 +105,16 @@ const HexagonGrid = (props) => {
                 x={`${hexDim.x}px`}
                 >
                   <Hexagon {..._hexProps} flatTop>
-                    {tryInvoke(renderHexagonContent, [hexagon], <tspan />)}
+                    {tryInvoke(renderHexagonContent, [hexagon], <tspan  />)}
                   </Hexagon>
                 </svg>
               );
             })}
           </svg>
-          </>
           
         );
       })}
     </svg>
-    </>
   );
 };
 
