@@ -25,6 +25,10 @@ a {
 * {
   box-sizing: border-box;
 }
+.selected{
+  border: 1px solid #006eff;
+  transform: scale(1.2);
+}
 
 /* hexagone main container */
 
@@ -470,16 +474,17 @@ a {
   position: absolute;
   left: 47%;
   top: 7px;
-  border: 1px solid red;
   z-index: 7;
 }
 
 .p1{
+  height: 30px;
+  width: 30px;
   position: absolute;
-  left: 8.7%;
-  top: 54.7%;
-  border: 1px solid red;
+  left: 10%;
+  top: 54%;
   z-index: 7;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
 
 .raiders{
@@ -487,115 +492,143 @@ a {
 }
 
 .p2{
+  height: 30px;
+  width: 30px;
   position: absolute;
-  left: 19%;
+  left: 20%;
   top: 12.7%;
-  border: 1px solid red;
   z-index: 7;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
 
 .p3{
+  height: 30px;
+  width: 30px;
   position: absolute;
-  left: 39.7%;
+  left: 40.75%;
   top: 9%;
-  border: 1px solid red;
   z-index: 7;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
 
 .p4{
+  height: 30px;
+  width: 30px;
   position: absolute;
-  left: 46.7%;
-  top: 37%;
-  border: 1px solid red;
+  left: 47.7%;
+  top: 36%;
   z-index: 7;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
 
 .p5{
+  height: 30px;
+  width: 30px;
   position: absolute;
-  left: 32.7%;
+  left: 33.7%;
   top: 60.7%;
-  border: 1px solid red;
   z-index: 7;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
 
 .p6{
+  height: 30px;
+  width: 30px;
   position: absolute;
-  left: 60.5%;
-  top: 85%;
-  border: 1px solid red;
+  left: 61.5%;
+  top: 84%;
   z-index: 7;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
 
 .p7{
+  height: 30px;
+  width: 30px;
   position: absolute;
-  left: 53.5%;
-  top: 49%;
-  border: 1px solid red;
+  left: 54.5%;
+  top: 48%;
   z-index: 7;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
 
 .p8{
+  height: 30px;
+  width: 30px;
   position: absolute;
-  left: 12%;
-  top: 25%;
-  border: 1px solid red;
+  left: 13.35%;
+  top: 24%;
   z-index: 7;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
 
 .p9{
+  height: 30px;
+  width: 30px;
   position: absolute;
-  left: 84.8%;
-  top: 27%;
-  border: 1px solid red;
+  left: 85.8%;
+  top: 26%;
   z-index: 7;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
 
 .p10{
+  height: 30px;
+  width: 30px;
   position: absolute;
-  left: 36.3%;
-  top: 35%;
-  border: 1px solid red;
+  left: 37.3%;
+  top: 34%;
   z-index: 7;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
 
 .p11{
+  height: 30px;
+  width: 30px;
   position: absolute;
-  left: 74%;
-  top: 61%;
-  border: 1px solid red;
+  left: 75%;
+  top: 60%;
   z-index: 7;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
 
 .p12{
+  height: 30px;
+  width: 30px;
   position: absolute;
-  left: 64%;
-  top: 11%;
-  border: 1px solid red;
+  left: 65%;
+  top: 10%;
   z-index: 7;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
 
 .p13{
+  height: 30px;
+  width: 30px;
   position: absolute;
-  left: 19%;
+  left: 20%;
   top: 76.5%;
-  border: 1px solid red;
   z-index: 7;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
 
 .p14{
+  height: 30px;
+  width: 30px;
   position: absolute;
-  left: 81%;
+  left: 82.25%;
   top: 49%;
-  border: 1px solid red;
   z-index: 7;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
 
 .p15{
+  height: 30px;
+  width: 30px;
   position: absolute;
-  left: 67.5%;
-  top: 37%;
-  border: 1px solid red;
+  left: 68.5%;
+  top: 36%;
   z-index: 7;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
 
 /* game icons info */

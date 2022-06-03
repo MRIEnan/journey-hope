@@ -57,14 +57,15 @@ const GameWheel = () => {
   //startship info
   const [starshipName, setStarshipName] = useState("wrap");
   const [stepLimit, setStepLimit] = useState(3);
+  const [fuelLevel,setFuelLevel] = useState(36);
 
   // hexagone grid info
   const [sectorName, setSectorName] = useState("36");
   const [positionX, setPositionX] = useState(305);
   const [positionY, setPositionY] = useState(600);
   const [hexagone, setHexagone] = useState(0);
-  const [finalPosition, setFinalPosition] = useState(1027);
-  const [initialPosition, setInitialPosition] = useState(1027);
+  const [finalPosition, setFinalPosition] = useState(1007);
+  const [initialPosition, setInitialPosition] = useState(1007);
   const [canMoveAr, setCanMoveAr] = useState([]);
   const [allInfo, setAllInfo] = useState("3");
 
@@ -345,12 +346,13 @@ const GameWheel = () => {
     } else {
       ans = 1 + (quarter - 1) * 7;
     }
+    console.log('sector',ans)
     return ans;
   };
 
   const getSectorName = (x = 650, y = 650) => {
-    const midX = 300;
-    const midY = 300;
+    const midX = 625;
+    const midY = 415;
     let posX = x;
     let posY = y;
     if (x < midX && y < midY) {
@@ -443,9 +445,9 @@ const GameWheel = () => {
     setTimeToMove(totalMoveTime);
     // setTimeToMove(10);
     console.log("setTimeToMove  ", timeToMoveDef);
-  }, [liteYear]);
+  }, [liteYear,liteYearDuration]);
 
-  /* useEffect(() => {
+  useEffect(() => {
     if (liteYearDuration < 1) {
       console.log("over");
       setLiteYear(liteYear--);
@@ -468,7 +470,7 @@ const GameWheel = () => {
     return () => {
       clearInterval(myInterval);
     };
-  }, [liteYearDuration]); */
+  }, [liteYearDuration]); 
 
   const planet = (e) => {
     // if (timeToMove < 0) {
@@ -672,8 +674,8 @@ const GameWheel = () => {
                   name="earth"
                   src={rImage}
                   alt="dest image"
-                  width={15}
-                  height={15}
+                  width={45}
+                  height={45}
                   zIndex={10}
                 />
               </div>;
@@ -686,8 +688,8 @@ const GameWheel = () => {
             //     name="earth"
             //     src={rImage}
             //     alt="dest image"
-            //     width={15}
-            //     height={15}
+            //     width={45}
+            //     height={45}
             //     zIndex={10}
             //     />
             // </div>
@@ -711,8 +713,8 @@ const GameWheel = () => {
                 name="earth"
                 src={destImage}
                 alt="dest image"
-                width={15}
-                height={15}
+                width={45}
+                height={45}
                 zIndex={10}
               />
             </div>
@@ -733,8 +735,8 @@ const GameWheel = () => {
                 src={p1Image}
                 name="p1 image"
                 alt="p1 image"
-                width={15}
-                height={15}
+                width={45}
+                height={45}
                 zIndex={7}
               />
             </div>
@@ -755,8 +757,8 @@ const GameWheel = () => {
                 src={p2Image}
                 name="p2 image"
                 alt="p2 image"
-                width={15}
-                height={15}
+                width={45}
+                height={45}
                 zIndex={7}
               />
             </div>
@@ -777,8 +779,8 @@ const GameWheel = () => {
                 src={p3Image}
                 name={"p3 image"}
                 alt="p3 image"
-                width={15}
-                height={15}
+                width={45}
+                height={45}
                 zIndex={7}
               />
             </div>
@@ -799,8 +801,8 @@ const GameWheel = () => {
                 src={p4Image}
                 name="p4 image"
                 alt="p4 image"
-                width={15}
-                height={15}
+                width={45}
+                height={45}
                 zIndex={7}
               />
             </div>
@@ -821,8 +823,8 @@ const GameWheel = () => {
                 src={p5Image}
                 alt="p5 image"
                 name="p5 image"
-                width={15}
-                height={15}
+                width={45}
+                height={45}
                 zIndex={7}
               />
             </div>
@@ -843,8 +845,8 @@ const GameWheel = () => {
                 src={p6Image}
                 alt="p6 image"
                 name="p6 image"
-                width={15}
-                height={15}
+                width={45}
+                height={45}
                 zIndex={7}
               />
             </div>
@@ -865,8 +867,8 @@ const GameWheel = () => {
                 src={p7Image}
                 alt="p7 image"
                 name="p7 image"
-                width={15}
-                height={15}
+                width={45}
+                height={45}
                 zIndex={7}
               />
             </div>
@@ -887,8 +889,8 @@ const GameWheel = () => {
                 src={p8Image}
                 alt="p8 image"
                 name="p8 image"
-                width={15}
-                height={15}
+                width={45}
+                height={45}
                 zIndex={7}
               />
             </div>
@@ -909,8 +911,8 @@ const GameWheel = () => {
                 src={p9Image}
                 alt="p9 image"
                 name="p9 image"
-                width={15}
-                height={15}
+                width={45}
+                height={45}
                 zIndex={7}
               />
             </div>
@@ -931,8 +933,8 @@ const GameWheel = () => {
                 src={p10Image}
                 alt="p10 image"
                 name="p10 image"
-                width={15}
-                height={15}
+                width={45}
+                height={45}
                 zIndex={7}
               />
             </div>
@@ -953,8 +955,8 @@ const GameWheel = () => {
                 src={p11Image}
                 alt="p11 image"
                 name="p11 image"
-                width={15}
-                height={15}
+                width={45}
+                height={45}
                 zIndex={7}
               />
             </div>
@@ -975,8 +977,8 @@ const GameWheel = () => {
                 src={p12Image}
                 alt="p12 image"
                 name="p12 image"
-                width={15}
-                height={15}
+                width={45}
+                height={45}
                 zIndex={7}
               />
             </div>
@@ -997,8 +999,8 @@ const GameWheel = () => {
                 src={p13Image}
                 alt="p13 image"
                 name="p13 image"
-                width={15}
-                height={15}
+                width={45}
+                height={45}
                 zIndex={7}
               />
             </div>
@@ -1019,8 +1021,8 @@ const GameWheel = () => {
                 src={p14Image}
                 alt="p14 image"
                 name="p14 image"
-                width={15}
-                height={15}
+                width={45}
+                height={45}
                 zIndex={7}
               />
             </div>
@@ -1041,8 +1043,8 @@ const GameWheel = () => {
                 src={p15Image}
                 alt="p15 image"
                 name="p15 image"
-                width={15}
-                height={15}
+                width={45}
+                height={45}
                 zIndex={7}
               />
             </div>
@@ -1095,8 +1097,8 @@ const GameWheel = () => {
                 <Image
                   src={noEntryZoneImage}
                   alt="no entry zone image"
-                  width={30}
-                  height={30}
+                  width={45}
+                  height={45}
                 />
               </div>
               <div>
@@ -1158,10 +1160,10 @@ const GameWheel = () => {
       <div className="Bottom-panel-container">
         <div className="left-bottom-main-container-lightyer-holder">
           <div  className="left-bottom-main-container-lightyear">
-            <p>Light Year <span className="left-bottom-main-container-lightyear-span">20</span></p>
+            <p>Light Year <span className="left-bottom-main-container-lightyear-span">{liteYear}</span></p>
           </div>
           <div className="left-bottom-main-container-lightyear-timer">
-            <p>3:00</p>
+            <p>{Math.floor(liteYearDuration/60)}:{Math.floor(liteYearDuration%60)}</p>
           </div>
         </div>
         <div className="left-bottom-starship-container">
@@ -1182,7 +1184,7 @@ const GameWheel = () => {
             height={53}
             />
           </div>
-            <p className="left-bottom-hexPng-container-fuel">36</p>
+            <p className="left-bottom-hexPng-container-fuel">{fuelLevel}</p>
         </div>
         <div className="right-bottom-bookPng-container">
           <div className="right-bottom-bookPng-container-image">

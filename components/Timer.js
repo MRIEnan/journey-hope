@@ -18,9 +18,12 @@ const Timer = () => {
         // console.log(liteYearTime.getTime-nDate.getTime);
     }
   return (
-  <div>
-      <h3>hello</h3>
+  <div style={{textAlign:'center',display:'grid',placeItems:'center',height:'100vh'}}>
+      <div>
+      <h3 style={{textTransform:"uppercase"}}>Journey Home</h3>
       <button onClick={onStart}>start</button>
+
+      </div>
   </div>
   );
 };

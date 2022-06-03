@@ -57,8 +57,8 @@ const LiteYearPoster = () => {
       <h2>Liteyear starting: {liteYear}</h2>
       <h3>starting {timeToStart}</h3>
       {timeToStart < 0 && <h1>STARTEd</h1>}
-      <div>
-        <div onClick={()=>setStarshipName('wrap')} className="starship-select-option-image-container" name="wrap">
+      <div style={{display:'flex',justifyContent:'center'}}>
+        <div onClick={()=>setStarshipName('wrap')} className={starshipName=='wrap'?"starship-select-option-image-container selected":"starship-select-option-image-container"}  name="wrap">
         <Image
               className="starship-select-option-image"
               src={starshipImage}
@@ -66,7 +66,7 @@ const LiteYearPoster = () => {
             />
             <h2>Wrap Starship</h2>
         </div>
-        <div onClick={()=>setStarshipName('force')}  className="starship-select-option-image-container" name="force">
+        <div onClick={()=>setStarshipName('force')}  className={starshipName=='force'?"starship-select-option-image-container selected":"starship-select-option-image-container"} name="force">
         <Image
               className="starship-select-option-image"
               src={starshipImage}

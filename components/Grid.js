@@ -253,8 +253,8 @@ const HexGridDemo = ({
         y="50%"
         fontSize={200}
         fontWeight="lighter"
-        style={{ fill: "black" }}
-        // style={{ fill: "none" }}
+        // style={{ fill: "white" }}
+        style={{ fill: "none" }}
         textAnchor="middle"
       >
         {hexagon}

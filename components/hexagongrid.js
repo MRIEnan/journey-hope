@@ -80,7 +80,7 @@ const HexagonGrid = (props) => {
   };
 
   return (
-    <svg style={{zIndex:'5',transform:'scale(1.05)',position:'relative',left:'-7px',borderRadius:'50%'}} width={600} height={600} x={x} y={y}>
+    <svg style={{zIndex:'5',transform:'scale(1.05)',position:'relative',left:'13px',borderRadius:'50%'}} width={600} height={600} x={x} y={y}>
       {times(state.rows, (row) => {
         const remaining = hexagons.length - row * state.columns;
         const columns = remaining < state.columns ? remaining : state.columns;
