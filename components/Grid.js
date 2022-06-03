@@ -3,6 +3,7 @@ import React from "react";
 import HexagonGrid from "./hexagongrid.js";
 
 const HexGridDemo = ({
+  outside,
   setPositionX,
   setPositionY,
   liteYear,
@@ -21,10 +22,26 @@ const HexGridDemo = ({
   fuel
 }) => {
   const getHexProps = (hexagon) => {
+    if(outside.includes(hexagon)){
+      return {
+        style: {
+          fill: "none",
+          // fill: "rgb(255, 120, 0)",
+          // fill: "rgba(255,255,255,0.2)",
+          // stroke: "rgba(255,255,255,0.35)",
+          // zIndex: "6",
+          cursor:'default',
+        },
+        onClick: (e) => {
+        },
+      }
+    }
     if(area1.includes(hexagon)){
       return {
         style: {
-          fill: "rgb(255, 120, 0)",
+          fill: "#e9c52c",
+          opacity: .7,
+          // fill: "rgb(255, 120, 0)",
           // fill: "rgba(255,255,255,0.2)",
           stroke: "rgba(255,255,255,0.35)",
           zIndex: "6",
@@ -36,7 +53,9 @@ const HexGridDemo = ({
     if(area2.includes(hexagon)){
       return {
         style: {
-          fill: "gray",
+          fill: "#e9c52c",
+          opacity: .7,
+          // fill: "gray",
           // fill: "rgba(255,255,255,0.2)",
           stroke: "rgba(255,255,255,0.35)",
           zIndex: "6",
@@ -48,7 +67,10 @@ const HexGridDemo = ({
     if(area3.includes(hexagon)){
       return {
         style: {
-          fill: "rgb(204, 164, 61)",
+          fill: "#e9c52c",
+          opacity: .7,
+          // fill: "linear-gradient(180deg, #453800 0%, #847329 100%);",
+          // fill: "rgb(204, 164, 61)",
           // fill: "rgba(255,255,255,0.2)",
           stroke: "rgba(255,255,255,0.35)",
           zIndex: "6",
@@ -60,7 +82,9 @@ const HexGridDemo = ({
     if(area4.includes(hexagon)){
       return {
         style: {
-          fill: "rgb(204, 164, 61)",
+          fill: "#e9c52c",
+          opacity: .7,
+          // fill: "rgb(204, 164, 61)",
           // fill: "rgba(255,255,255,0.2)",
           stroke: "rgba(255,255,255,0.35)",
           zIndex: "6",
@@ -185,10 +209,12 @@ const HexGridDemo = ({
     } else {
       return {
         style: {
-          fill: "rgba(255,255,255,0.2)",
+          // fill: "rgba(255,255,255,0.2)",
+          fill: "transparent",
           // fill: hexagon==finalPosition?"rgb(0, 255, 21)":"transparent",
           // fill: hexagon==initialPosition?"rgb(250, 125, 101)":"transparent",
-          stroke: "rgba(255,255,255,0.35)",
+          // stroke: "rgba(255,255,255,0.35)",
+          stroke: "rgba(0, 255, 255, 0.5)",
           zIndex: "6",
         },
         /* style: {

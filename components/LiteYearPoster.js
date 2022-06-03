@@ -1,9 +1,12 @@
+import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
+import starshipImage from '../assets/images/journy-home/arrow.png';
 
 const LiteYearPoster = () => {
   const [liteYear, setLiteYear] = useState(null);
   const [timeToStart, setTimeToStart] = useState(10);
+  const [starshipName,setStarshipName] = useState('wrap')
   const router = useRouter();
 
   useEffect(() => {
@@ -29,6 +32,15 @@ const LiteYearPoster = () => {
         localStorage.setItem('position-time',positionTime);
         localStorage.setItem('lite-year-end-time',liteYearEndTime);
         localStorage.setItem('remaining-liteyear',liteYear);
+        let stepLimit;
+        if(starshipName=='wrap'){
+          localStorage.setItem('starship-name',starshipName);
+          localStorage.setItem('step-limit',3);
+        }
+        if(starshipName=='force'){
+          localStorage.setItem('starship-name',starshipName);
+          localStorage.setItem('step-limit',4);
+        }
         router.push('/gameplay');
     }
     const myInterval = setInterval(() => {
@@ -45,7 +57,26 @@ const LiteYearPoster = () => {
       <h2>Liteyear starting: {liteYear}</h2>
       <h3>starting {timeToStart}</h3>
       {timeToStart < 0 && <h1>STARTEd</h1>}
-      <button onClick={()=>router.push('/play')}>Play</button>
+      <div>
+        <div onClick={()=>setStarshipName('wrap')} className="starship-select-option-image-container" name="wrap">
+        <Image
+              className="starship-select-option-image"
+              src={starshipImage}
+              alt="wrap starship"
+            />
+            <h2>Wrap Starship</h2>
+        </div>
+        <div onClick={()=>setStarshipName('force')}  className="starship-select-option-image-container" name="force">
+        <Image
+              className="starship-select-option-image"
+              src={starshipImage}
+              alt="force starship"
+            />
+            <h2>Force Starship</h2>
+        </div>
+      </div>
+      <button onClick={()=>setTimeToStart(0)}>start</button>
+      <button onClick={()=>router.push('/play')}>Return</button>
     </div>
   );
 };

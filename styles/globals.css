@@ -1,11 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
 html,
 body {
   padding: 0;
   margin: 0;
-  background: rgb(18,61,120);
-  background: linear-gradient(90deg, rgba(18,61,120,1) 0%, rgba(21,37,81,1) 100%);
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  /* background: rgb(18,61,120); */
+  /* background: linear-gradient(90deg, rgba(18,61,120,1) 0%, rgba(21,37,81,1) 100%); */
+  background: #000000;
+  /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
+  font-family: 'Space Grotesk', sans-serif;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, .25);
+  position: relative;
+  color: #ffffff;
 }
 
 a {
@@ -19,13 +25,177 @@ a {
 
 /* hexagone main container */
 
+.game-wheel-whole-window{
+  display: grid;
+  grid-template-rows: 100px 600px;
+  height: 700px;
+}
+
+.notification-panel-container{
+  position: absolute;
+  top: -70px;
+  left: 50%;
+  transform: translateX(-631px);
+}
+
 .gamewheel-main-container{
   display: grid;
   padding: 5px;
-  grid-template-columns: 360px 600px 1fr;
+  grid-template-columns: 360px 600px 300px;
+  position: relative;
   /* background-color: rgb(37, 8, 105); */
+  background-color: #000000;
 }
 
+/* captin info card section */
+
+.captain-info-holder{
+  position: absolute;
+  top: 40px;
+  left: 120px;
+}
+
+.captain-title{
+  font-size: 10px;
+  margin: 0;
+}
+
+.captain-name{
+  font-size: 17;
+  font-weight: 700;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.captain-info-bottom-stripe{
+  position: absolute;
+  top: 87px;
+  left: 6px;
+}
+
+/* team card container */
+.team-info-card-container{
+  position: relative;
+  margin-top: 20px;
+}
+
+.team-info-card-bg{
+  position: relative;
+  height: 360px;
+  width: 285px;
+  left: 34px;
+  background: linear-gradient(to right, #00FFFF, #ffffff 100%);
+  opacity: .1;
+  border-radius: 40px;
+  mix-blend-mode: difference;
+  transform: rotateZ(74deg);
+}
+
+.team-info-card-box{
+  position: absolute;
+  left: 34px;
+}
+
+.team-info-your-name-title{
+  display: grid;
+  place-items: center;
+ width: 173px;
+ height: 38.86px;
+ position: absolute;
+ left: 71px;
+ border-radius: 20px
+}
+.team-info-card-header{
+  position: absolute;
+  width: 173px;
+  height: 38.86px;
+  top: 20px;
+  background: #FFFFFF;
+  opacity: 0.2;
+  border-radius: 20px;
+}
+.team-info-your-name-title p{
+  position: absolute;
+  /* left: 9.26%; */
+  /* right: 84.57%; */
+  top: 30.57%;
+  bottom: 57.82%;
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 163.1%;
+}
+
+.team-player-name-role-icon-container{
+  position: absolute;
+  width: 205px;
+  height: 40px;
+  left: 15.33%;
+  top: 98px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* background-color: antiquewhite; */
+}
+
+.team-player-icon-container{
+  width: 25px;
+  height: 25px;
+  display: inline-grid;
+  place-items: center;
+  border: 1.5px solid #00FFFF;
+  border-radius: 50%;
+}
+
+.team-player-role-container{
+  position: relative;
+  top: 5px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 163.1%;
+  display: flex;
+  color: #00FFFF;
+  margin-right: 30px;
+  height: 60px;
+  flex-wrap: wrap;
+}
+.team-player-name-container{
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 163.1%;
+}
+
+.atom{
+  width: 205px;
+  height: 40px;
+  left: 15.33%;
+  top: 159px;
+}
+.atom-icon-container{
+  position: relative;
+  left: 10px;
+  width: 24px;
+  height: 21px;
+  aspect-ratio: 1/1;
+  border: none;
+  margin-right: 10px;
+}
+
+.atom-role-container{
+  position: relative;
+  left: 15px;
+}
+
+
+.team-info-card-bottom-stripe{
+  position: absolute;
+  top: 258px;
+  left: 40px;
+}
+
+
+/* hexagone conatiner section */
 .hexagone-container{
   height: 600px;
   width: 600px;
@@ -36,7 +206,10 @@ a {
   border-radius: 50%;
   overflow: hidden;
   position: relative;
-  border: 3px solid rgba(255, 255, 255, .55);
+  /* margin-top: 100px; */
+  /* border: 3px solid rgba(255, 255, 255, .55); */
+  border: 3px solid #00FFFF80;
+  /* transform: scale(.9) */
 }
 
 /* beacon information container  */
@@ -54,9 +227,12 @@ a {
 }
 
 .a{
-  stroke: rgba(255, 255, 255, 0.438);
+  /* stroke: rgba(255, 255, 255, 0.438); */
+  stroke: #00FFFF80;
   fill: none;
-  stroke-width: 3;
+  stroke-width: 2;
+  z-index: 10;
+  mix-blend-mode: screen;
 }
 .cls-1{
   fill:  none;
@@ -70,7 +246,7 @@ a {
 .vertical-section{
   position: absolute;
   /* border: 2px solid red ; */
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  border: 1px solid #00FFFF80;
   height: 100%;
   background-color: transparent;
   z-index: 3;
@@ -360,4 +536,95 @@ a {
   top: 37%;
   border: 1px solid red;
   z-index: 7;
+}
+
+/* game icons info */
+
+.game-icon-main-list-container{
+  position: absolute;
+  top: 81px;
+  left: 1010px;
+}
+
+.game-icon-info-container{
+  position: absolute;
+  top: 81px;
+  left: 1010px;
+  z-index: 4;
+}
+
+.game-icon-list-single-item{
+  position: absolute;
+  display: flex;
+  z-index: 10;
+  top: 80px;
+  margin-left: 55px;
+  /* position: relative; */
+  /* top: 0; */
+  /* left: 50px; */
+  /* background-color: red; */
+}
+.game-icon-list-single-item-image-container{
+  /* background-color: teal; */
+  width: 40px;
+  display: grid;
+  place-items: center;
+  margin-right: 20px;
+}
+
+.game-icon-list-single-item p{
+  font-weight:500;
+  font-size:16px;
+  line-height:26.1px;
+  color: #ffffff;
+}
+.icon-info-card-bottom-stripe{
+  position: absolute;
+  top: 354px;
+  left: 1020px;
+}
+
+.one-item{
+  position: absolute;
+  top: 110px;
+}
+.two-item{
+  position: absolute;
+  top: 150px;
+}
+.three-item{
+  position: absolute;
+  top: 190px;
+}
+.four-item{
+  position: absolute;
+  top: 230px;
+}
+.five-item{
+  position: absolute;
+  top: 270px;
+}
+.six-item{
+  position: absolute;
+  top: 310px;
+}
+
+/* Bottom panel design section */
+
+.Bottom-panel-container{
+  height: 100px;
+  overflow: hidden;
+  top: -100px;
+  position: relative;
+}
+
+.left-bottom-main-container{
+  position: absolute;
+  left: -218px;
+}
+
+.right-bottom-main-container{
+  position: absolute;
+  top: 0;
+  right: -218px;
 }
