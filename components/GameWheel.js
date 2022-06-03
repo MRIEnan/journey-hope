@@ -29,6 +29,14 @@ import powerStationImage from "../assets/images/journy-home/icon-list-item/power
 import noEntryZoneImage from "../assets/images/journy-home/icon-list-item/restricted.png";
 import stargateImage from "../assets/images/journy-home/icon-list-item/stargate.png";
 import stormImage from "../assets/images/journy-home/icon-list-item/storm.png";
+import starshipOnePngImage from "../assets/images/journy-home/icons/starshipOne.png";
+import hexPngImage from "../assets/images/journy-home/icons/hexPng.png";
+import bookPngImage from "../assets/images/journy-home/icons/bookPng.png";
+import beaconHolderPngImage from "../assets/images/journy-home/Box/beaconHolderImage.png";
+import beaconPngImage from "../assets/images/journy-home/icons/beaconPngImage.png";
+import globePngImage from "../assets/images/journy-home/icons/globePngImage.png";
+import infoPngImage from "../assets/images/journy-home/icons/infoPngImage.png";
+import settingsPngImage from "../assets/images/journy-home/icons/settingsPngImage.png";
 import HexGridDemo from "./Grid";
 import CaptainInfo from "./CaptainInfo";
 import CircleSvg from "./CircleSvg";
@@ -565,6 +573,27 @@ const GameWheel = () => {
         </div>
       </div> */}
       <div>
+        <div className="notification-bar-infoPng-container">
+          <Image
+            src={infoPngImage}
+            alt={`${infoPngImage}`}
+            />
+        </div>
+        <div className="notification-bar-globePng-container">
+          <Image
+            src={globePngImage}
+            alt={`${globePngImage}`}
+            />
+        </div>
+        <div className="notification-bar-text-area-container">
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis eius facere doloribus minus accusantium voluptatibus. Autem maiores voluptatibus consequatur. </p>
+        </div>
+        <div className="notification-bar-settingsPng-container">
+          <Image
+            src={settingsPngImage}
+            alt={`${settingsPngImage}`}
+            />
+        </div>
         <NotificationBar />
       </div>
       <div className="gamewheel-main-container">
@@ -1031,15 +1060,17 @@ const GameWheel = () => {
           home
         </button> */}
 
-          <div className="game-icon-info-list-sigle">
+          <div className="game-icon-info-list-single">
+            <div className="game-icon-info-container-bg"></div>
             <GameIconInfo />
             <div className="game-icon-list-single-item ">
-              <div className="game-icon-list-single-item-image-container">
+              <div  className="game-icon-list-single-item-image-container">
+                <div id="raiders-icon-details"></div>
                 <Image
                   src={raiderImage}
                   alt="raider image"
-                  width={25}
-                  height={25}
+                  width={23}
+                  height={23}
                 />
               </div>
               <div>
@@ -1076,9 +1107,9 @@ const GameWheel = () => {
               <div className="game-icon-list-single-item-image-container">
                 <Image
                   src={powerStationImage}
-                  alt="pwer station zone image"
-                  width={30}
-                  height={30}
+                  alt="power station zone image"
+                  width={35}
+                  height={35}
                 />
               </div>
               <div>
@@ -1089,9 +1120,9 @@ const GameWheel = () => {
               <div className="game-icon-list-single-item-image-container">
                 <Image
                   src={planetImage}
-                  alt="plnet image zone image"
-                  width={30}
-                  height={30}
+                  alt="planet image zone image"
+                  width={25}
+                  height={26}
                 />
               </div>
               <div>
@@ -1103,8 +1134,8 @@ const GameWheel = () => {
                 <Image
                   src={stargateImage}
                   alt="starship zone image"
-                  width={30}
-                  height={30}
+                  width={25}
+                  height={25}
                 />
               </div>
               <div>
@@ -1125,6 +1156,67 @@ const GameWheel = () => {
         </div>
       </div>
       <div className="Bottom-panel-container">
+        <div className="left-bottom-main-container-lightyer-holder">
+          <div  className="left-bottom-main-container-lightyear">
+            <p>Light Year <span className="left-bottom-main-container-lightyear-span">20</span></p>
+          </div>
+          <div className="left-bottom-main-container-lightyear-timer">
+            <p>3:00</p>
+          </div>
+        </div>
+        <div className="left-bottom-starship-container">
+          <div className="left-bottom-starship-container-image"></div>
+          <Image
+            src={starshipOnePngImage}
+            alt={`${starshipOnePngImage}`}
+            width={35}
+            height={43}
+            />
+        </div>
+        <div className="left-bottom-hexPng-container">
+          <div className="left-bottom-hexPng-container-image">
+          <Image
+            src={hexPngImage}
+            alt={`${hexPngImage}`}
+            width={50}
+            height={53}
+            />
+          </div>
+            <p className="left-bottom-hexPng-container-fuel">36</p>
+        </div>
+        <div className="right-bottom-bookPng-container">
+          <div className="right-bottom-bookPng-container-image">
+          <Image
+            src={bookPngImage}
+            alt={`${bookPngImage}`}
+            width={50}
+            height={53}
+            />
+          </div>
+            <div className="right-bottom-bookPng-container-text">
+              <p>Guide to galaxy</p>
+            </div>
+        </div>
+        <div className="right-bottom-active-text-container">
+          <p>ACTIVE</p>
+        </div>
+        <div className="right-bottom-beaconPng-container">
+          <div className="right-bottom-beaconPng-container-image">
+          <Image
+            src={beaconHolderPngImage}
+            alt={`${beaconHolderPngImage}`}
+            />
+          </div>
+            <div className="right-bottom-beaconPng-container-text">
+              <p>BIO<br/>BEACON</p>
+            </div>
+            <div className="right-bottom-beaconPng-container-beacon-image">
+              <Image 
+              src={beaconPngImage}
+              alt={`${beaconPngImage}`}
+              />
+              </div>
+        </div>
         <LeftBottomInfo />
         <RightBottomInfo />
       </div>

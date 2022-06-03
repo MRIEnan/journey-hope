@@ -1,4 +1,7 @@
+/* space grotesk */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+/* orbitron */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
 
 html,
 body {
@@ -31,11 +34,64 @@ a {
   height: 700px;
 }
 
+/*  notificaion bar panel  */
+
 .notification-panel-container{
   position: absolute;
   top: -70px;
-  left: 50%;
-  transform: translateX(-631px);
+  left: 45px;
+  /* transform: translateX(-631px); */
+}
+.notification-bar-infoPng-container{
+  position: absolute;
+  left: 230px;
+  top: 12px;
+  z-index: 11;
+}
+.notification-bar-globePng-container{
+  position: absolute;
+  left: 346px;
+  top: 10px;
+  z-index: 11;
+}
+.notification-bar-globePng-container::before{
+  content: '';
+  height: 6px;
+  width: 6px;
+  background-color: red;
+  display: inline-block;
+  position: absolute;
+  top: 18px;
+  left: 38px;
+  z-index: 13;
+  border-radius: 50%;
+}
+.notification-bar-text-area-container{
+  position: absolute;
+  left: 416px;
+  top: 29px;
+  width: 570px;
+  height: 50px;
+  z-index: 11;
+  overflow: hidden;
+}
+.notification-bar-text-area-container p{
+  margin: 0;
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 163.1%;
+  /* or 23px */
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.notification-bar-settingsPng-container{
+  position: absolute;
+  right: 230px;
+  top: 12px;
+  z-index: 11;
 }
 
 .gamewheel-main-container{
@@ -89,6 +145,9 @@ a {
   border-radius: 40px;
   mix-blend-mode: difference;
   transform: rotateZ(74deg);
+  background: #2AF5FF;
+  opacity: 0.1;
+  filter: blur(101px);
 }
 
 .team-info-card-box{
@@ -103,7 +162,8 @@ a {
  height: 38.86px;
  position: absolute;
  left: 71px;
- border-radius: 20px
+ border-radius: 20px;
+ top:0;
 }
 .team-info-card-header{
   position: absolute;
@@ -586,7 +646,17 @@ a {
 
 .one-item{
   position: absolute;
-  top: 110px;
+  top: 115px;
+}
+#raiders-icon-details{
+  /* box-shadow: 0px 0px 23.0086px 1.76989px #00FF24, 0px 0px 23.0086px 1.76989px #00FF24, inset 0px 0px 14.1591px #B0FF24; */
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  display: inline-block;
+  background: #00ff24;
+  border-radius: 50%;
+  filter: blur(10px);
 }
 .two-item{
   position: absolute;
@@ -612,7 +682,7 @@ a {
 /* Bottom panel design section */
 
 .Bottom-panel-container{
-  height: 100px;
+  height: 130px;
   overflow: hidden;
   top: -100px;
   position: relative;
@@ -622,9 +692,189 @@ a {
   position: absolute;
   left: -218px;
 }
+.left-bottom-main-container-lightyer-holder{
+  position:absolute;
+  z-index: 10;
+  left: 105px;
+  top: 15px;
+}
+
+.left-bottom-main-container-lightyear p{
+  position: absolute;
+  top: -5px;
+  left: 5px;
+  width: 80px;
+  /* font-family: 'Nasalization'; */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  /* identical to box height */
+  text-align: center;
+  color: rgba(0,173,160,0.88);
+  /* text-shadow:0px 3.66281px 86.9917px rgba(0, 173, 160, 0.72); */
+}
+.left-bottom-main-container-lightyear-span{
+  position: absolute;
+  top: -10px;
+  left: 90px;
+  font-family: 'Nasalization';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 43px;
+  /* identical to box height */
+  text-align: center;
+  color: rgba(0,173,160,0.88);
+  /* color: #FFFFFF; */
+  /* text-shadow: 0px 3.66281px 86.9917px rgba(0, 173, 160, 0.72); */
+}
+.left-bottom-main-container-lightyear-timer p{
+  position: absolute;
+  left: -5px;
+  top: 10px;
+  /* font-family: 'Digital-7'; */
+  font-family: 'Orbitron', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 26px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  color: #FFFFFF;
+
+}
+
+.left-bottom-starship-container{
+  position: absolute;
+  top: 76px;
+  height: 40px;
+  width: 36px;
+  left: 324px;
+  z-index: 10;
+  transform: rotate(5.66deg);
+  overflow: hidden;
+  border-radius: 50%;
+}
+.left-bottom-starship-container-image{
+  position: absolute;
+  top: 5px;
+  height: 34px;
+  width: 34px;
+  background-color: #00ff24;
+  border-radius: 30px;
+  filter: blur(20px);
+  opacity: .4;
+}
+
+.left-bottom-hexPng-container{
+  position: absolute;
+  z-index: 10;
+}
+
+.left-bottom-hexPng-container-image{
+  position: absolute;
+  left: 361px;
+  top: 76px;
+  height: 60px;
+  width: 60px;
+}
+
+.left-bottom-hexPng-container-fuel{
+  /* font-family: 'Nasalization'; */
+  position: absolute;
+  top: 77px;
+  left: 376px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16.4011px;
+  line-height: 19px;
+  color: #5FD3D3;
+  /* border: 0.638021px solid #5FD3D3; */
+  transform: rotate(5.98deg);
+}
+
 
 .right-bottom-main-container{
   position: absolute;
   top: 0;
   right: -218px;
+}
+
+.right-bottom-bookPng-container{
+  position: absolute;
+  z-index: 10;
+  left: 934px;
+  top: 78px;
+  width: 100px;
+}
+.right-bottom-bookPng-container-image{
+  width: 60px;
+}
+
+.right-bottom-bookPng-container-text{
+  position: absolute;
+  top: -4px;
+  z-index: 11;
+  /* background-color: aliceblue; */
+  width: 45px;
+  display: flex;
+  flex-wrap: wrap;
+  left: 50px;
+}
+.right-bottom-bookPng-container-text p{
+  font-family: 'Nasalization';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  text-shadow: 0px 0px 14px rgba(255, 255, 0, 0.62);
+  transform: rotate(-7.67deg);
+}
+
+.right-bottom-beaconPng-container{
+  position: absolute;
+  z-index: 10;
+  left: 1104px;
+  top: 40px;
+}
+.right-bottom-active-text-container{
+  position: absolute;
+  z-index: 10;
+  left: 1140px;
+  top: 9px;
+}
+.right-bottom-active-text-container p{
+  font-family: 'Nasalization';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13.2727px;
+  line-height: 16px;
+  /* identical to box height */
+  color: #11E040;
+  text-shadow: 1.00362px 0px 20px #00FF24;
+}
+
+.right-bottom-beaconPng-container-text{
+  position: absolute;
+  top: 10px;
+  right: 56px;
+  z-index: 11;
+}
+.right-bottom-beaconPng-container-text p{
+  font-family: 'Nasalization';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13.2727px;
+  line-height: 16px;
+  color: #FFFFFF;
+}
+.right-bottom-beaconPng-container-beacon-image{
+  position: absolute;
+  top: 12px;
+  right: 25px;
+  z-index: 11;
 }
