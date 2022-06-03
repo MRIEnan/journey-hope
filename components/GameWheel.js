@@ -124,7 +124,8 @@ const GameWheel = () => {
     874, 893, 894, 895, 912, 913, 914, 932, 95, 982, 1010, 921,
   ]);
 
-  const [fuel, setFuel] = useState([545, 348]);
+  const [fuel, setFuel] = useState([348]);
+  // const [fuel, setFuel] = useState([545, 348]);
 
   // liteyear info
   const [liteYear, setLiteYear] = useState(null);
@@ -473,12 +474,12 @@ const GameWheel = () => {
   }, [liteYearDuration]); 
 
   const planet = (e) => {
-    // if (timeToMove < 0) {
-    //   alert("moving time over");
-    //   return;
-    // }
+    if (timeToMove < 0) {
+      alert("moving time over");
+      return;
+    }
     // alert(`Planet Arrived ${e.target.name}!`);
-    // alert(`Planet Arrived ${e.target.name}!`);
+    alert(`Planet Arrived ${e.target.name}!`);
     if (e.target.name == beaconActivatePlanet) {
       setIsBeaconIconActivated(true);
       const arr = { name: myName, text: `Planet Arrived ${e.target.name}!` };

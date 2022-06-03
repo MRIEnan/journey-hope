@@ -188,7 +188,7 @@ const HexGridDemo = ({
             stroke: "white"
           }, */
         onClick: (e) => {
-          if (timeToMove > 0 || timeToMove<= 0) {
+          if (timeToMove > 0) {
             console.log(e);
             setInitialPosition(finalPosition);
             setFinalPosition(hexagon);
@@ -222,7 +222,7 @@ const HexGridDemo = ({
               stroke: "white"
             }, */
         onClick: (e) => {
-          if (timeToMove > 0 || timeToMove<= 0) {
+          if (timeToMove > 0) {
             console.log(e);
             setPositionX(e.clientX-360);
             setPositionY(e.clientY);
